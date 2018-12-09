@@ -1,0 +1,15 @@
+.idea
+.idea/*
+lib
+lib/*
+bin
+bin/*
+include
+include/*
+.Python
+local
+local/*
+pip-selfcheck.json
+__pycache__
+__pycache__/
+__pycache__/*
