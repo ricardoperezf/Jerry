@@ -1,9 +1,8 @@
-from flask import request, jsonify
+from flask import request, jsonify, render_template, abort
 from jerry import jerry_app, client
 
-db = client.abd
+db = client.adb
 collection = db.Client
-
 
 @jerry_app.route("/example", methods=["GET"])
 def example():
@@ -17,7 +16,7 @@ def get_discipline_city():
     for q in cursor:
         print(q)
         vector.append({
-            'id': q["id"]
+            'ID_USUARIO': q["ID_USUARIO"]
         })
 
     return jsonify(vector)
@@ -34,3 +33,15 @@ def get_test():
         })
 
     return jsonify(vector)
+
+@jerry_app.route("/users", methods=["POST"])
+def log_in():
+    username = request.form.get("username")
+    password = request.form.get("password")
+
+    # print("\n " + str(username) + " " + str(password) + "\n")
+
+    if username is None or password is None:
+        # print("entro")
+        abort(400)
+    return jsonify(password)
