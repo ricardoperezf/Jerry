@@ -23,7 +23,7 @@ def get_discipline_city():
     return jsonify(vector)
 
 @jerry_app.route("/test", methods=["GET"])
-def get_discipline_test():
+def get_test():
     cursor = collection.find()
     vector = []
     for q in cursor:
