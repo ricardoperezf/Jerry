@@ -1,13 +1,13 @@
 from flask import request, jsonify
 from jerry import jerry_app, client
 
-db = client.abd
+db = client.adb
 collection = db.Client
 
 
 @jerry_app.route("/example", methods=["GET"])
 def example():
-    return jsonify("Successful")
+    return jsonify(db.name)
 
 
 @jerry_app.route("/city", methods=["GET"])
@@ -17,7 +17,7 @@ def get_discipline_city():
     for q in cursor:
         print(q)
         vector.append({
-            'id': q["id"]
+            'ID_USUARIO': q["ID_USUARIO"]
         })
 
     return jsonify(vector)
