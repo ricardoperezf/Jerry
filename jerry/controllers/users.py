@@ -1,23 +1,26 @@
 from flask import request, jsonify
 from jerry import jerry_app
+from flask_httpauth import HTTPBasicAuth
+
 from ..models.User import User, UserCreation, UserInformation
 
+auth = HTTPBasicAuth()
 
 def init():
     global username, password, user
     username = request.form.get("username")
     password = request.form.get("password")
-    user = User(username, password)
+    user = User()
 
 
 @jerry_app.route("/login", methods=["POST"])
 def log_in():
     init()
-    user_logged_in = user.log_in()
+    user_logged_in = user.log_in(username, password)
     if user_logged_in:
-        return jsonify(True), 201
+        return jsonify(user_logged_in), 201
     else:
-        return jsonify(False), 404
+        return jsonify(user_logged_in), 404
 
 
 @jerry_app.route("/signup", methods=["POST"])
