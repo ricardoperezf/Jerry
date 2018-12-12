@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
+	<title>Test form</title>
+</head>
+<body style="background: #FF0000;
+    background: -webkit-linear-gradient(to left, #FF0000, #FA8072, #ffffff);
+    background: linear-gradient(to left, #FF0000, #FA8072, #ffffff);">
+
+<h1 style="color:red;">Jerry</h1>
+<form class="container" action="http://127.0.0.1:5000/login" method="POST">
+	<img src="{{ url_for('static', filename='pagando.jpg') }}" alt="Cinque Terre" width="1000" height="400">
+	<div class="top" height="400">
+	<p style="color: white">Log In</p>
+	<input name="username" type="text" placeholder="Usuario" id="fname"/>
+	<br/>
+	<input name="password" type="password" placeholder="Contraseña" id="lname"/>
+	<br/>
+    <input type="submit" value="Submit"/>
+	<input type="submit" formaction="http://127.0.0.1:5000/signup" formmethod="get">
+	</div>
+</form>
+<footer>
+	jerry todos los derechos reservados
+</footer>
+
+</body>
+</html>

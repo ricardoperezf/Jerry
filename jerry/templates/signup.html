@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
+	<title>Test form</title>
+</head>
+<body>
+<form action="http://127.0.0.1:5000/login" method="POST">
+	<p></p>
+	<input name="username" type="text" placeholder="Usuario" id="fname"/>
+	<input name="password" type="password" placeholder="Contraseña" id="lname"/>
+	<input name="username" type="text" placeholder="Usuario" id="fname"/>
+	<input name="password" type="password" placeholder="Contraseña" id="lname"/>
+	<input name="username" type="text" placeholder="Usuario" id="fname"/>
+	<input name="password" type="password" placeholder="Contraseña" id="lname"/>
+    <input type="submit" value="Submit">
+	<input type="submit" formaction="http://127.0.0.1:5000/signup" formmethod="get">
+</form>
+</body>
+</html>
