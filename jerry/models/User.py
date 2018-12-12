@@ -1,4 +1,5 @@
 from jerry import client
+from flask import render_template
 from passlib.apps import custom_app_context as pwd_context
 
 db = client.adb
@@ -24,7 +25,7 @@ class User:
             print(password_hashed)
             password_verification = self.verify_password(password, password_hashed)
             if password_verification:
-                return "hizo match"
+                return render_template("PaginaPrincipal.html")
             else:
                 return "No hizo match"
         else:
@@ -70,7 +71,7 @@ class UserCreation(User):
                 "gender": self.gender
             }
             insert_user = collection.insert_one(new_user_query)
-            return True
+            return render_template("signin.html")
         else:
             return False
 

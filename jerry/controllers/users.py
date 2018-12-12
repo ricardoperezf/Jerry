@@ -18,7 +18,7 @@ def log_in():
     init()
     user_logged_in = user.log_in(username, password)
     if user_logged_in:
-        return jsonify(user_logged_in), 201
+        return user_logged_in, 201
     else:
         return jsonify(user_logged_in), 404
 
@@ -26,6 +26,8 @@ def log_in():
 @jerry_app.route("/signup", methods=["POST"])
 def sign_up():
     init()
+    usuario = request.form.get("username")
+    contra = request.form.get("password")
     name = request.form.get("name")
     last_name = request.form.get("last_name")
     telephone = request.form.get("telephone")
@@ -33,10 +35,10 @@ def sign_up():
     birthday = request.form.get("birthday")
     gender = request.form.get("gender")
 
-    user_not_exits = UserCreation(username, password, name, last_name,
+    user_not_exits = UserCreation(usuario, contra, name, last_name,
                                   telephone, address, birthday, gender).sign_up()
     if user_not_exits:
-        return jsonify(user_not_exits), 201
+        return user_not_exits, 201
     else:
         return jsonify(user_not_exits), 401
 

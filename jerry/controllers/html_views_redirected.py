@@ -7,6 +7,6 @@ from jerry import jerry_app
 def signin():
     return render_template("signin.html")
 
-@jerry_app.route('/signup')
+@jerry_app.route('/paginasignup')
 def signup():
     return render_template("signup.html")
