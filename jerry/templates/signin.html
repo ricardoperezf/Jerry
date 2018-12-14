@@ -8,7 +8,7 @@
 <body>
 
 <h1 style="color:red;">Jerry</h1>
-<form class="container" action="http://127.0.0.1:5000/login" method="POST">
+<form class="container">
 	<img src="{{ url_for('static', filename='pagando.jpg') }}" alt="Cinque Terre" width="1000" height="400">
 	<div class="top">
 	<p style="color: white">Log In</p>
@@ -16,12 +16,12 @@
 	<br/>
 	<input name="password" type="password" placeholder="Contraseña" id="lname"/>
 	<br/>
-    <input type="submit" value="Submit"/>
-	<input type="submit" formaction="http://127.0.0.1:5000/paginasignup" formmethod="get" value="Sign up">
+    <input type="submit" formaction="http://127.0.0.1:5000/login" formmethod="POST" value="Submit"/>
+	<input type="submit" formaction="http://127.0.0.1:5000/paginasignup" formmethod="POST" value="Sign up">
 	</div>
 </form>
 <footer>
-	jerry todos los derechos reservados
+	Marico el que lo lea
 </footer>
 
 </body>

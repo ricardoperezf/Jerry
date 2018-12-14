@@ -41,6 +41,32 @@ class User:
         #                         "$5$rounds=535000$JXpn16YJ58Fw7Rk1$zIEeZXK5h9Y4xd1RKcIh/2kDb8tKnFp.pYJfp6kO55/")
         return pwd_context.verify(password, password_hashed)
 
+class AddCard(User):
+
+    def __init__(self, accountnumber, cardnumber, cvv, expdate, accounttype, brand):
+        super().__init__()
+        self.accountnumber = accountnumber
+        self.cardnumber = cardnumber
+        self.cvv = cvv
+        self.expdate = expdate
+        self.accounttype = accounttype
+        self.brand = brand
+
+    def add_card(self):
+        username_exits = self.find_user(self.username)
+        print(username_exits)
+        if username_exits is None:
+            new_user_query = {"username": "oscar", "account": []}
+            new_Values = {"$set": {"account.accountnumber": self.accountnumber,
+                                   "account.cardnumber": self.cardnumber,
+                                   "account.cvv": self.cvv,
+                                   "account.expdate": self.expdate,
+                                   "account.accounttype": self.accounttype,
+                                   "account.brand": self.brand}}
+            insert_user = collection.updateOne(new_user_query, new_Values)
+            return render_template("PaginaPrincipal.html")
+        else:
+            return False
 
 class UserCreation(User):
 
@@ -68,12 +94,14 @@ class UserCreation(User):
                 "telphone": self.telephone,
                 "address": self.address,
                 "birthday": self.birthday,
-                "gender": self.gender
+                "gender": self.gender,
+                "account": []
             }
             insert_user = collection.insert_one(new_user_query)
             return render_template("signin.html")
         else:
             return False
+
 
 
 class UserInformation:

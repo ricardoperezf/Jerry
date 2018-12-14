@@ -9,9 +9,9 @@
 
 <div class="topnav">
   <p>Jerry</p>
-  <a href="#">Añadir Tarjeta</a>
-  <a href="#">Cambiar tarjeta</a>
-  <a action="http://127.0.0.1:5000/signout" method="get">Log out</a>
+  <a href="{{ url_for('ac') }}">Añadir Tarjeta</a>
+  <a href="{{ url_for('ac') }}">Cambiar tarjeta</a>
+  <a href="{{ url_for('signout') }}">Log out</a>
 </div>
 
 <section>
@@ -29,12 +29,23 @@
 
   <article>
     <h1>Mapa</h1>
+    <div class="a" id="googleMap"></div>
   </article>
 </section>
 
 <footer>
-	jerry todos los derechos reservados
+	Marico el que lo lea
 </footer>
+<script>
+function myMap() {
+var mapProp= {
+  center:new google.maps.LatLng(51.508742,-0.120850),
+  zoom:5,
+};
+var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+}
+</script>
 
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQzUEp0rllfkQAxXOqJji_QL8DC6If48s&callback=myMap"></script>
 </body>
 </html>

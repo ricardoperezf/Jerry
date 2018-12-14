@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
+	<title>Sign up</title>
 </head>
 <body>
-
+<form action="http://127.0.0.1:5000/signup" method="POST">
+	<div style="text-align: center;">
+	<p>Añada la tarjeta Nueva</p>
+	<input name="accountNumber" type="text" placeholder="Usuario"/>
+	<br/>
+	<input name="cardNumber" type="password" placeholder="Contraseña"/>
+	<br/>
+	<input name="cvv" type="password" placeholder="Confirmar contraseña"/>
+	<br/>
+	<input name="expDate" type="text" placeholder="Nombre"/>
+	<br/>
+	<input name="accountType" type="text" placeholder="Apellido"/>
+	<br/>
+	<input name="brand" type="text" placeholder="Telefono"/>
+	<br/>
+    <input type="submit" value="Submit">
+	</div>
+</form>
+<input type="submit" onclick="location.href='/pp'" value="volver">
 </body>
 </html>

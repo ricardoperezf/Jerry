@@ -2,7 +2,7 @@ from flask import request, jsonify
 from jerry import jerry_app
 from flask_httpauth import HTTPBasicAuth
 
-from ..models.User import User, UserCreation, UserInformation
+from ..models.User import User, UserCreation, UserInformation, AddCard
 
 auth = HTTPBasicAuth()
 
@@ -23,6 +23,23 @@ def log_in():
         return jsonify(user_logged_in), 404
 
 
+@jerry_app.route("/addcard", methods=["POST"])
+def AddCard():
+    init()
+    accountnumber = request.form.get("accountnumber")
+    cardnumber = request.form.get("cardnumber")
+    cvv = request.form.get("cvv")
+    expdate = request.form.get("expdate")
+    accounttype = request.form.get("accounttype")
+    brand = request.form.get("brand")
+
+    user_not_exits = AddCard(accountnumber, cardnumber, cvv, expdate,
+                             accounttype, brand).add_card()
+    if user_not_exits:
+        return user_not_exits, 201
+    else:
+        return jsonify(user_not_exits), 401
+
 @jerry_app.route("/signup", methods=["POST"])
 def sign_up():
     init()
@@ -41,7 +58,6 @@ def sign_up():
         return user_not_exits, 201
     else:
         return jsonify(user_not_exits), 401
-
 
 @jerry_app.route("/user_information", methods=["GET"])
 def user_information():
