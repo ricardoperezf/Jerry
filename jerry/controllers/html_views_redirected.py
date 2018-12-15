@@ -7,22 +7,27 @@ from jerry import jerry_app
 def signin():
     return render_template("signin.html")
 
-@jerry_app.route('/paginasignup',methods=["POST"])
+
+@jerry_app.route('/index')
+def pp():
+    return render_template("index.html")
+
+
+@jerry_app.route('/paginasignup', methods=["POST"])
 def signup():
     return render_template("signup.html")
+
 
 @jerry_app.route('/signout')
 def signout():
     return render_template("signin.html")
 
-@jerry_app.route('/ac')
-def ac():
+
+@jerry_app.route('/add_modify_card')
+def add_card_view():
     return render_template("AñadirTarjeta.html")
 
-@jerry_app.route('/pp')
-def pp():
-    return render_template("PaginaPrincipal.html")
 
-@jerry_app.route('/ct')
-def ct():
+@jerry_app.route('/add_modify_card')
+def modify_card_view():
     return render_template("CambiarTarjeta.html")

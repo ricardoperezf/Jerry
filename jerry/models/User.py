@@ -1,9 +1,6 @@
-from jerry import client
+from jerry import client, collection
 from flask import render_template
 from passlib.apps import custom_app_context as pwd_context
-
-db = client.adb
-collection = db.Client
 
 
 class User:
@@ -22,10 +19,10 @@ class User:
         username_exits = self.find_user(username)
         if username_exits is not None:
             password_hashed = username_exits['password']
-            print(password_hashed)
+            # print(password_hashed)
             password_verification = self.verify_password(password, password_hashed)
             if password_verification:
-                return render_template("PaginaPrincipal.html")
+                return "Hizo match"
             else:
                 return "No hizo match"
         else:
@@ -33,7 +30,7 @@ class User:
 
     def hash_password(self, password):
         self.password_hash = pwd_context.encrypt(password)
-        print(self.password_hash)
+        # print(self.password_hash)
         return self.password_hash
 
     def verify_password(self, password, password_hashed):
@@ -41,32 +38,6 @@ class User:
         #                         "$5$rounds=535000$JXpn16YJ58Fw7Rk1$zIEeZXK5h9Y4xd1RKcIh/2kDb8tKnFp.pYJfp6kO55/")
         return pwd_context.verify(password, password_hashed)
 
-class AddCard(User):
-
-    def __init__(self, accountnumber, cardnumber, cvv, expdate, accounttype, brand):
-        super().__init__()
-        self.accountnumber = accountnumber
-        self.cardnumber = cardnumber
-        self.cvv = cvv
-        self.expdate = expdate
-        self.accounttype = accounttype
-        self.brand = brand
-
-    def add_card(self):
-        username_exits = self.find_user(self.username)
-        print(username_exits)
-        if username_exits is None:
-            new_user_query = {"username": "oscar", "account": []}
-            new_Values = {"$set": {"account.accountnumber": self.accountnumber,
-                                   "account.cardnumber": self.cardnumber,
-                                   "account.cvv": self.cvv,
-                                   "account.expdate": self.expdate,
-                                   "account.accounttype": self.accounttype,
-                                   "account.brand": self.brand}}
-            insert_user = collection.updateOne(new_user_query, new_Values)
-            return render_template("PaginaPrincipal.html")
-        else:
-            return False
 
 class UserCreation(User):
 
@@ -101,7 +72,6 @@ class UserCreation(User):
             return render_template("signin.html")
         else:
             return False
-
 
 
 class UserInformation:
