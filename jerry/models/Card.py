@@ -17,13 +17,36 @@ class Card:
         if self.username is not None:
             print(self.username)
             find_username = {"username": self.username}
-            new_values = {"$set": {"account.accountnumber": self.account_number,
-                                   "account.cardnumber": self.card_number,
-                                   "account.cvv": self.cvv,
-                                   "account.expdate": self.expiration_date,
-                                   "account.accounttype": self.account_type,
-                                   "account.brand": self.brand}}
+            new_values = {"$": {"account.accountNumber": self.account_number}}
             insert_user = collection.update_one(find_username, new_values)
             return "Modificado"
         else:
             return False
+
+    def add_card(self):
+        username_query = {"username": self.username}
+        username_information = collection.find_one(username_query)
+        account_list_len = len(username_information['account'])
+        if account_list_len == 0:
+            new_values = {"$set": {"account." + str(0) + ".id": str(1),
+                                   "account." + str(0) + ".accountNumber": self.account_number,
+                                   "account." + str(0) + ".accountType": self.card_number,
+                                   "account." + str(0) + ".cvv": self.cvv,
+                                   "account." + str(0) + ".expDate": self.expiration_date,
+                                   "account." + str(0) + ".accountType": self.account_type,
+                                   "account." + str(0) + ".brand": self.brand}}
+            print("es : " + str(account_list_len))
+            collection.update_one(username_information, new_values)
+            return "Inserted"
+        else:
+            new_id = account_list_len + 1
+            new_values = {"$set": {"account." + str(account_list_len) + ".id": str(new_id),
+                                   "account." + str(account_list_len) + ".accountNumber": self.account_number,
+                                   "account." + str(account_list_len) + ".c": self.card_number,
+                                   "account." + str(account_list_len) + ".cvv": self.cvv,
+                                   "account." + str(account_list_len) + ".expirationDate": self.expiration_date,
+                                   "account." + str(account_list_len) + ".accountType": self.account_type,
+                                   "account." + str(account_list_len) + ".brand": self.brand}}
+            print("es : " + str(account_list_len))
+            collection.update_one(username_information, new_values)
+            return "Agregado nuevo"

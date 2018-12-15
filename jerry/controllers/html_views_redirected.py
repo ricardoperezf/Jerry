@@ -23,7 +23,7 @@ def signout():
     return render_template("signin.html")
 
 
-@jerry_app.route('/add_modify_card')
+@jerry_app.route('/add_cards')
 def add_card_view():
     return render_template("AñadirTarjeta.html")
 
