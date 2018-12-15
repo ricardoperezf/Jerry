@@ -1,10 +1,12 @@
 from flask import request, jsonify
 from jerry import jerry_app
 from flask_httpauth import HTTPBasicAuth
-
-from ..models.User import User, UserCreation, UserInformation, AddCard
+from flask import render_template
+from ..models.User import User, UserCreation, UserInformation
+from ..models import Card
 
 auth = HTTPBasicAuth()
+
 
 def init():
     global username, password, user
@@ -17,28 +19,30 @@ def init():
 def log_in():
     init()
     user_logged_in = user.log_in(username, password)
-    if user_logged_in:
-        return user_logged_in, 201
+    if user_logged_in == "Hizo match":
+        return render_template("index.html")
     else:
         return jsonify(user_logged_in), 404
 
 
-@jerry_app.route("/addcard", methods=["POST"])
-def AddCard():
-    init()
-    accountnumber = request.form.get("accountnumber")
-    cardnumber = request.form.get("cardnumber")
+@jerry_app.route("/add_modify_card", methods=["POST"])
+def add_modify_card():
+    account_number = request.form.get("accountnumber")
+    card_number = request.form.get("cardnumber")
     cvv = request.form.get("cvv")
-    expdate = request.form.get("expdate")
-    accounttype = request.form.get("accounttype")
+    expiration_date = request.form.get("expdate")
+    account_type = request.form.get("accounttype")
     brand = request.form.get("brand")
 
-    user_not_exits = AddCard(accountnumber, cardnumber, cvv, expdate,
-                             accounttype, brand).add_card()
-    if user_not_exits:
-        return user_not_exits, 201
+    add_new_card = Card.Card(account_number, card_number, cvv, expiration_date,
+                             account_type, brand, username).add_modify_card()
+    print(add_new_card)
+    if add_new_card == "Modificado":
+        return render_template("index.html"), 201
     else:
-        return jsonify(user_not_exits), 401
+        return jsonify(add_new_card), 401
+
+
 
 @jerry_app.route("/signup", methods=["POST"])
 def sign_up():
@@ -58,6 +62,7 @@ def sign_up():
         return user_not_exits, 201
     else:
         return jsonify(user_not_exits), 401
+
 
 @jerry_app.route("/user_information", methods=["GET"])
 def user_information():

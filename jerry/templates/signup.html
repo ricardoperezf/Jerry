@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
-	<title>Sign up</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
+    <title>Sign up</title>
 </head>
 <body>
 <form action="http://127.0.0.1:5000/signup" method="POST">
-	<div style="text-align: center;">
-	<p>Inserte los datos</p>
-	<input name="username" type="text" placeholder="Usuario"/>
-	<br/>
-	<input name="password" type="password" placeholder="Contraseña"/>
-	<br/>
-	<input name="confirm_password" type="password" placeholder="Confirmar contraseña"/>
-	<br/>
-	<input name="name" type="text" placeholder="Nombre"/>
-	<br/>
-	<input name="last_name" type="text" placeholder="Apellido"/>
-	<br/>
-	<input name="telephone" type="text" placeholder="Telefono"/>
-	<br/>
-	<input name="address" type="text" placeholder="Direccion"/>
-	<br/>
-	<input name="birthday" type="date" placeholder="Fecha De nacimiento"/>
-	<br/>
-	<p>Genero</p>
-	Masculino<input name="gender" type="radio" value="M">
-	Femenino<input name="gender" type="radio" value="F"/>
-	Otros<input name="gender" type="radio" value="O"/>
-	<br/>
-    <input type="submit" value="Submit">
-	</div>
+    <div style="text-align: center;">
+        <p>Inserte los datos</p>
+        <input name="username" type="text" placeholder="Usuario"/>
+        <br/>
+        <input name="password" type="password" placeholder="Contraseña"/>
+        <br/>
+        <input name="confirm_password" type="password" placeholder="Confirmar contraseña"/>
+        <br/>
+        <input name="name" type="text" placeholder="Nombre"/>
+        <br/>
+        <input name="last_name" type="text" placeholder="Apellido"/>
+        <br/>
+        <input name="telephone" type="text" placeholder="Telefono"/>
+        <br/>
+        <input name="address" type="text" placeholder="Direccion"/>
+        <br/>
+        <input name="birthday" type="date" placeholder="Fecha De nacimiento"/>
+        <br/>
+        <p>Genero</p>
+        Masculino<input name="gender" type="radio" value="M">
+        Femenino<input name="gender" type="radio" value="F"/>
+        Otros<input name="gender" type="radio" value="O"/>
+        <br/>
+        <input type="submit" value="Submit">
+    </div>
 </form>
 <input type="submit" onclick="location.href='/'" value="volver">
 </body>

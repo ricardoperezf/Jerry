@@ -13,3 +13,4 @@ pip-selfcheck.json
 __pycache__
 __pycache__/
 __pycache__/*
+jerry/__pycache__/
