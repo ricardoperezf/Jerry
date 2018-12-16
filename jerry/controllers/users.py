@@ -47,22 +47,22 @@ def sign_up():
         return jsonify(user_not_exits), 401
 
 
-@jerry_app.route("/add_modify_card", methods=["POST"])
-def add_modify_card():
-    account_number = request.form.get("accountnumber")
-    card_number = request.form.get("cardnumber")
-    cvv = request.form.get("cvv")
-    expiration_date = request.form.get("expdate")
-    account_type = request.form.get("accounttype")
-    brand = request.form.get("brand")
-
-    add_new_card = Card(account_number, card_number, cvv, expiration_date,
-                        account_type, brand, username).add_modify_card()
-    print(add_new_card)
-    if add_new_card == "Modificado":
-        return render_template("index.html"), 201
-    else:
-        return jsonify(add_new_card), 401
+# @jerry_app.route("/add_modify_card", methods=["POST"])
+# def add_modify_card():
+#    account_number = request.form.get("accountnumber")
+#    card_number = request.form.get("cardnumber")
+#    cvv = request.form.get("cvv")
+#    expiration_date = request.form.get("expdate")
+#    account_type = request.form.get("accounttype")
+#    brand = request.form.get("brand")
+#
+#    add_new_card = Card(account_number, card_number, cvv, expiration_date,
+#                        account_type, brand, username).add_modify_card()
+#    print(add_new_card)
+#    if add_new_card == "Modificado":
+#       return render_template("index.html"), 201
+#    else:
+#       return jsonify(add_new_card), 401
 
 
 @jerry_app.route("/add_cards", methods=["POST"])
@@ -74,12 +74,22 @@ def add_cards():
     account_type = request.form.get("account_type")
     brand = request.form.get("brand")
 
-    add_new_card = Card(account_number, card_number, cvv, expiration_date,
-                        account_type, brand, username).add_card()
+    add_new_card = Card().add_card(account_number, card_number, cvv, expiration_date,
+                                   account_type, brand, username)
     if add_new_card == "Inserted":
-        return jsonify(add_new_card)
+        return render_template("myCards.html")
     else:
         return jsonify(add_new_card)
+
+
+@jerry_app.route("/get_my_cards", methods=["GET"])
+def get_my_cards():
+    card_list = Card().get_cards(username)
+    if card_list is not None:
+        # print(card_list)
+        return render_template("myCards.html", get_cards=card_list)
+    else:
+        return jsonify("There's not exits cards")
 
 
 def init_preference():
@@ -104,7 +114,7 @@ def get_preferences():
     preference_list = Preference().get_preferences(username)
     if preference_list is not None:
         print(preference_list)
-        return render_template("preferences.html", get_preferences=preference_list)
+        return render_template("myPreferences.html", get_preferences=preference_list)
     else:
         return jsonify("There's not exits preferences")
 
