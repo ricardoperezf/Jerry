@@ -8,13 +8,14 @@ input[type=text], select {
 }
 
 input[type=submit] {
-  background-color: #FA8072;
+  background-color: #82D1F5;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition:0.3s;
 }
 
 input[type=password] {
@@ -28,7 +29,25 @@ input[type=password] {
 }
 
 input[type=submit]:hover {
-  background-color: #DC143C;
+  background-color: #40AEDF;
+}
+
+.row{
+    margin-left:auto !important;
+  margin-right:auto !important;
+}
+
+img{
+  max-width:100%;
+  height:auto;
+}
+
+.row.login-title{
+  display:block;
+  color:white;
+  background-color:transparent;
+  text-align:center;
+  font-family:'Poppins';
 }
 
 div {
@@ -51,6 +70,7 @@ h1, h2, h3, h4, h5, h6, div, span {
 
 footer {
   color: black;
+  text-align:center;
 }
 .container{
   position: relative;
@@ -65,9 +85,8 @@ footer {
 }
 
 body{
-    background: #FF0000;
-    background: -webkit-linear-gradient(to left, #FF0000, #FA8072, #ffffff);
-    background: linear-gradient(to left, #FF0000, #FA8072, #ffffff);
+    /* La nueva sintaxis necesaria para navegadores apegados al estandar (IE 10 y Firefox 10 en adelante), sin prefijo */
+    background: linear-gradient(to bottom, black, white);
 }
 
 
@@ -122,12 +141,24 @@ nav ul {
   padding: 0;
 }
 
-article {
-  float: left;
-  padding: 20px;
-  width: 90%;
-  background-color: #f1f1f1;
-  height: 400px; /* only for demonstration, should be removed */
+/*article {*/
+  /*float: left;*/
+  /*padding: 20px;*/
+  /*width: 90%;*/
+  /*background-color: #f1f1f1;*/
+  /*height: 400px; !* only for demonstration, should be removed *!*/
+/*}*/
+
+.col-md-6{
+  display:none;
+  text-align:center;
+  background-color:transparent;
+}
+
+.row.container-fluid{
+  margin-top:20px;
+  background-color:transparent;
+  height:78vh;
 }
 
 /* Clear floats after the columns */
