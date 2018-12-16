@@ -1,4 +1,4 @@
-input[type=text], select {
+input[type=text], input[type=date], select {
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -155,10 +155,23 @@ nav ul {
   background-color:transparent;
 }
 
+.col-md-12{
+  display:none;
+}
+
 .row.container-fluid{
   margin-top:20px;
   background-color:transparent;
-  height:78vh;
+}
+
+@media (min-width:981px){
+  .signin .row.container-fluid {
+    height:78vh;
+  }
+
+  .signup .row.container-fluid {
+    height:100vh;
+  }
 }
 
 /* Clear floats after the columns */
