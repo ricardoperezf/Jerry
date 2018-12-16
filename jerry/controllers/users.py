@@ -43,6 +43,22 @@ def add_modify_card():
         return jsonify(add_new_card), 401
 
 
+@jerry_app.route("/add_cards", methods=["POST"])
+def add_cards():
+    account_number = request.form.get("account_number")
+    card_number = request.form.get("card_number")
+    cvv = request.form.get("cvv")
+    expiration_date = request.form.get("expiration_date")
+    account_type = request.form.get("account_type")
+    brand = request.form.get("brand")
+
+    add_new_card = Card.Card(account_number, card_number, cvv, expiration_date,
+                             account_type, brand, username).add_card()
+    if add_new_card == "Inserted":
+        return jsonify(add_new_card)
+    else:
+        return jsonify(add_new_card)
+
 
 @jerry_app.route("/signup", methods=["POST"])
 def sign_up():
