@@ -23,7 +23,7 @@ class Preference:
             new_id = preferences_list_len + 1
             new_values = self.set_new_values(preferences_list_len, new_id, document_values)
             collection.update_one(username_information, new_values)
-        return "Agregado nuevo"
+        return "Inserted"
 
     def set_new_values(self, index_array, index_id, value_list):
         new_values = {"$set": {"preferences." + str(index_array) + ".id": str(index_id),
