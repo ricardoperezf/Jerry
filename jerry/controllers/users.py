@@ -57,7 +57,7 @@ def add_modify_card():
     brand = request.form.get("brand")
 
     add_new_card = Card(account_number, card_number, cvv, expiration_date,
-                             account_type, brand, username).add_modify_card()
+                        account_type, brand, username).add_modify_card()
     print(add_new_card)
     if add_new_card == "Modificado":
         return render_template("index.html"), 201
@@ -75,7 +75,7 @@ def add_cards():
     brand = request.form.get("brand")
 
     add_new_card = Card(account_number, card_number, cvv, expiration_date,
-                             account_type, brand, username).add_card()
+                        account_type, brand, username).add_card()
     if add_new_card == "Inserted":
         return jsonify(add_new_card)
     else:
@@ -101,9 +101,10 @@ def add_preferences():
 
 @jerry_app.route("/get_preferences", methods=["GET"])
 def get_preferences():
-    get_preference = Preference().get_preferences(username)
-    if get_preference is not None:
-        return jsonify(get_preference)
+    preference_list = Preference().get_preferences(username)
+    if preference_list is not None:
+        print(preference_list)
+        return render_template("preferences.html", get_preferences=preference_list)
     else:
         return jsonify("There's not exits preferences")
 

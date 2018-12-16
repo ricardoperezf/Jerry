@@ -1,3 +1,4 @@
+from flask import jsonify
 from jerry import collection
 
 
@@ -36,4 +37,5 @@ class Preference:
         username_query = {"username": username}
         username_information = collection.find_one(username_query)
         preferences_list = username_information['preferences']
+        print(preferences_list)
         return preferences_list
