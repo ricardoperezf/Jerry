@@ -5,6 +5,7 @@ from flask import render_template
 from ..models.User import User, UserCreation, UserInformation
 from ..models.User2 import *
 from ..models.Preference import Preference
+from ..models.Card import Card
 
 auth = HTTPBasicAuth()
 
@@ -55,7 +56,7 @@ def add_modify_card():
     account_type = request.form.get("accounttype")
     brand = request.form.get("brand")
 
-    add_new_card = Card.Card(account_number, card_number, cvv, expiration_date,
+    add_new_card = Card(account_number, card_number, cvv, expiration_date,
                              account_type, brand, username).add_modify_card()
     print(add_new_card)
     if add_new_card == "Modificado":
@@ -73,7 +74,7 @@ def add_cards():
     account_type = request.form.get("account_type")
     brand = request.form.get("brand")
 
-    add_new_card = Card.Card(account_number, card_number, cvv, expiration_date,
+    add_new_card = Card(account_number, card_number, cvv, expiration_date,
                              account_type, brand, username).add_card()
     if add_new_card == "Inserted":
         return jsonify(add_new_card)
@@ -93,12 +94,12 @@ def add_preferences():
     init_preference()
     add_new_preference = Preference().add_preference(category, amount, term, username)
     if add_new_preference == "Inserted":
-        return jsonify(add_new_preference)
+        return render_template("index.html")
     else:
         return jsonify(add_new_preference)
 
 
-@jerry_app.route("/preferences", methods=["GET"])
+@jerry_app.route("/get_preferences", methods=["GET"])
 def get_preferences():
     get_preference = Preference().get_preferences(username)
     if get_preference is not None:
