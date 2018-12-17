@@ -17,7 +17,7 @@ class Card:
         if self.username is not None:
             print(self.username)
             find_username = {"username": self.username}
-            new_values = {"$": {"account.accountNumber": self.account_number}}
+            new_values = {"$set": {"account.accountNumber": self.account_number}}
             insert_user = collection.update_one(find_username, new_values)
             return "Modificado"
         else:
