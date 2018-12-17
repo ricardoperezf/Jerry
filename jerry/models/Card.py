@@ -53,9 +53,32 @@ class Card:
                                "account." + str(index_array) + ".expiration_date": value_list["expiration_date"]}}
         return new_values
 
-    def get_cards(self, username):
+    @staticmethod
+    def get_cards(username):
         username_query = {"username": username}
         username_information = collection.find_one(username_query)
         account_list = username_information['account']
-        print(account_list)
+        # print(account_list)
         return account_list
+
+    def delete_card(self, username, id):
+        username_query = {"username": username}
+        username_information = collection.find_one(username_query)
+        account_list = username_information['account']
+        if account_list is not None:
+            account_query = \
+                {
+                    "$pop":
+                        {
+                            "account": "1"
+                            [
+                                {
+                                    "id": "1"
+                                }
+                            ]
+                        }
+                }
+            collection.update(username_query, account_query)
+            return "Deleted"
+        else:
+            return "False"

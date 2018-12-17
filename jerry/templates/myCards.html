@@ -13,6 +13,7 @@
     <a href="{{ url_for('get_my_cards') }}">Mis tarjetas</a>
     <a href="{{ url_for('get_preferences') }}">Mis preferencias</a>
     <a href="#">Mis sugerencias</a>
+    <a href="{{ url_for('user_information') }}">Mi usuario</a>
     <a href="{{ url_for('signout') }}">Cerrar sesión</a>
 </div>
 <div class="container">
@@ -43,21 +44,64 @@
                     <td>{{ i["account_type"]}}</td>
                     <td>{{ i["brand"]}}</td>
                     <td>
-                        <button type="button" class="btn btn-primary btn-sm">Editar</button>
-                        <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                data-target="#cardsEditModal">Editar
+                        </button>
+                        <form action="http://127.0.0.1:5000/delete_my_cards/{{ i['id'] }}" method="POST">
+                            <div style="text-align: center;">
+                                <input type="submit" value="Submit">
+                            </div>
+                            <button type="submit" class="btn btn-danger btn-sm" data-id="{{ i['id'] }}">{{
+                                i['id'] }} Eliminar
+                            </button>
+                        </form>
                     </td>
                 </tr>
                 {% endfor %}
                 </tbody>
             </table>
         </div>
-        <div class="col-sm">
+        <div class=" col-sm
+                            ">
             <a href="{{ url_for('get_my_cards') }}" class="btn btn-primary btn-sm" role="button"
                aria-pressed="true" data-toggle="modal" data-target="#cardsModal">Añadir tarjeta</a>
         </div>
 
 
         <div class="modal fade" id="cardsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Añadir tarjeta</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="http://127.0.0.1:5000/add_cards" method="POST">
+                            <div style="text-align: center;">
+                                <input name="account_number" type="text" placeholder="Número de cuenta"/>
+                                <br/>
+                                <input name="card_number" type="text" placeholder="Número de tarjeta"/>
+                                <br/>
+                                <input name="cvv" type="text" placeholder="CVV"/>
+                                <br/>
+                                <input name="expiration_date" type="text" placeholder="Fecha de expiración"/>
+                                <br/>
+                                <input name="account_type" type="text" placeholder="Tipo de cuenta"/>
+                                <br/>
+                                <input name="brand" type="text" placeholder="Marca"/>
+                                <br/>
+                                <input type="submit" value="Submit">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="cardsEditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">

@@ -92,6 +92,16 @@ def get_my_cards():
         return jsonify("There's not exits cards")
 
 
+@jerry_app.route("/delete_my_cards/<id>", methods=["POST"])
+def delete_my_cards(id):
+    print(id)
+    delete_card = Card().delete_card(username, id)
+    if delete_card == "Deleted":
+        return render_template("index.html")
+    else:
+        return jsonify(delete_card)
+
+
 def init_preference():
     global category, amount, term
     category = request.form.get("category")
@@ -119,13 +129,16 @@ def get_preferences():
         return jsonify("There's not exits preferences")
 
 
-########################################################################
-
-
-@jerry_app.route("/user_information", methods=["GET"])
+@jerry_app.route("/get_information", methods=["GET"])
 def user_information():
-    information = UserInformation().get_user_information()
-    return jsonify(information)
+    information = User().get_user_information(username)
+    if information is not False:
+        return render_template("myInformation.html", information=information)
+    else:
+        return jsonify(information)
+
+
+########################################################################
 
 
 ########################################################################
