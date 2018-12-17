@@ -33,10 +33,25 @@ class User:
         # print(self.password_hash)
         return self.password_hash
 
-    def verify_password(self, password, password_hashed):
+    @staticmethod
+    def verify_password(password, password_hashed):
         # return pwd_context.verify(password,
         #                         "$5$rounds=535000$JXpn16YJ58Fw7Rk1$zIEeZXK5h9Y4xd1RKcIh/2kDb8tKnFp.pYJfp6kO55/")
         return pwd_context.verify(password, password_hashed)
+
+    @staticmethod
+    def get_user_information(username):
+        username_query = {"username": username}
+        username_exits = collection.find_one(username_query)
+        print(username_exits)
+        if username_exits is not None:
+            user_information = {"username": username_exits["username"], "name": username_exits["name"],
+                                "lastname": username_exits["lastname"], "telphone": username_exits["telphone"],
+                                "address": username_exits["address"], "birthday": username_exits["birthday"],
+                                "gender": username_exits["gender"]}
+            return user_information
+        else:
+            return False
 
 
 class UserCreation(User):
