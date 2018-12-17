@@ -46,7 +46,7 @@ class User:
         print(username_exits)
         if username_exits is not None:
             user_information = {"username": username_exits["username"], "name": username_exits["name"],
-                                "lastname": username_exits["lastname"], "telphone": username_exits["telphone"],
+                                "last_name": username_exits["last_name"], "telephone": username_exits["telephone"],
                                 "address": username_exits["address"], "birthday": username_exits["birthday"],
                                 "gender": username_exits["gender"]}
             return user_information
@@ -76,8 +76,8 @@ class UserCreation(User):
                 "username": self.username,
                 "password": self.password,
                 "name": self.name,
-                "lastname": self.last_name,
-                "telphone": self.telephone,
+                "last_name": self.last_name,
+                "telephone": self.telephone,
                 "address": self.address,
                 "birthday": self.birthday,
                 "gender": self.gender,
