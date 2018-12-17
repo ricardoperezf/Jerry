@@ -1,3 +1,4 @@
+from flask import jsonify
 from jerry import collection
 
 
@@ -16,7 +17,7 @@ class Preference:
         print(preferences_list_len)
         document_values = {"category": category, "amount": amount, "term": term}
         if preferences_list_len == 0:
-            new_values = self.set_new_values(0, 1)
+            new_values = self.set_new_values(0, 1, document_values)
             collection.update_one(username_information, new_values, document_values)
             return "Inserted"
         else:
@@ -36,4 +37,5 @@ class Preference:
         username_query = {"username": username}
         username_information = collection.find_one(username_query)
         preferences_list = username_information['preferences']
+        print(preferences_list)
         return preferences_list
