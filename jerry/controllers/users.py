@@ -138,7 +138,6 @@ def user_information():
     else:
         return jsonify(information)
 
-
 @jerry_app.route("/modify_information", methods=["POST"])
 def modify_information():
     username = request.form.get("username")
@@ -159,60 +158,3 @@ def modify_information():
 
     modify_user = User().modify_user_information(username, name, last_name, telephone, address, birthday, gender)
     return jsonify(modify_user)
-
-
-########################################################################
-
-
-########################################################################
-## TODO LO DEMÁS EN ADELANTE SERÁ DE PRUEBA
-
-def init2():
-    global username, password, user2
-    username = request.form.get("username")
-    password = request.form.get("password")
-    user2 = User2(username, password)
-
-
-@jerry_app.route("/login2", methods=["POST"])
-def log_in2():
-    init2()
-    user_logged_in = user2.log_in()
-    if user_logged_in == "Hizo match":
-        return render_template("index.html")
-    else:
-        return jsonify(user_logged_in), 404
-
-
-@jerry_app.route("/signup2", methods=["POST"])
-def sign_up2():
-    init()
-    usuario = request.form.get("username")
-    contra = request.form.get("password")
-    name = request.form.get("name")
-    last_name = request.form.get("last_name")
-    telephone = request.form.get("telephone")
-    address = request.form.get("address")
-    birthday = request.form.get("birthday")
-    gender = request.form.get("gender")
-
-    user_not_exits = UserCreation(usuario, contra, name, last_name,
-                                  telephone, address, birthday, gender).sign_up()
-    if user_not_exits:
-        return user_not_exits, 201
-    else:
-        return jsonify(user_not_exits), 401
-
-
-def init3():
-    global username3, password3, user3
-    username3 = request.form.get("username")
-    password3 = request.form.get("password")
-    user3 = User3()
-
-
-@jerry_app.route("/login3", methods=["POST"])
-def login3():
-    init3()
-    user3.set_username(username3, password3)
-    return user3.get_username()
