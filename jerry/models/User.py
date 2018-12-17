@@ -46,12 +46,20 @@ class User:
         print(username_exits)
         if username_exits is not None:
             user_information = {"username": username_exits["username"], "name": username_exits["name"],
-                                "lastname": username_exits["lastname"], "telphone": username_exits["telphone"],
+                                "last_name": username_exits["last_name"], "telephone": username_exits["telephone"],
                                 "address": username_exits["address"], "birthday": username_exits["birthday"],
                                 "gender": username_exits["gender"]}
             return user_information
         else:
             return False
+
+    def modify_user_information(self, username, name, last_name, address, birthday, gender, telephone):
+        find_username = {"username": self.username}
+        new_values = {
+            "$set": {"username": username, "name": name, "lastname": last_name, "address": address, "birthday": birthday,
+                  "gender": gender, "telphone": telephone}}
+        insert_user = collection.update_one(find_username, new_values)
+        return "Modificado"
 
 
 class UserCreation(User):
@@ -68,7 +76,9 @@ class UserCreation(User):
         self.gender = gender
 
     def sign_up(self):
+        print(self.username)
         username_exits = self.find_user(self.username)
+        print(username_exits)
         print(username_exits)
         if username_exits is None:
             self.password = self.hash_password(self.password)
@@ -76,12 +86,13 @@ class UserCreation(User):
                 "username": self.username,
                 "password": self.password,
                 "name": self.name,
-                "lastname": self.last_name,
-                "telphone": self.telephone,
+                "last_name": self.last_name,
+                "telephone": self.telephone,
                 "address": self.address,
                 "birthday": self.birthday,
                 "gender": self.gender,
-                "account": []
+                "account": [],
+                "preferences": []
             }
             insert_user = collection.insert_one(new_user_query)
             return render_template("signin.html")

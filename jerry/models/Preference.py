@@ -18,7 +18,7 @@ class Preference:
         document_values = {"category": category, "amount": amount, "term": term}
         if preferences_list_len == 0:
             new_values = self.set_new_values(0, 1, document_values)
-            collection.update_one(username_information, new_values, document_values)
+            collection.update_one(username_information, new_values)
             return "Inserted"
         else:
             new_id = preferences_list_len + 1

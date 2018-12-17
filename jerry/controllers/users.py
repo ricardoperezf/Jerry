@@ -113,6 +113,7 @@ def init_preference():
 def add_preferences():
     init_preference()
     add_new_preference = Preference().add_preference(category, amount, term, username)
+    print("pref" + add_new_preference)
     if add_new_preference == "Inserted":
         return render_template("index.html")
     else:
@@ -136,6 +137,28 @@ def user_information():
         return render_template("myInformation.html", information=information)
     else:
         return jsonify(information)
+
+
+@jerry_app.route("/modify_information", methods=["POST"])
+def modify_information():
+    username = request.form.get("username")
+    name = request.form.get("name")
+    last_name = request.form.get("last_name")
+    telephone = request.form.get("telephone")
+    address = request.form.get("address")
+    birthday = request.form.get("birthday")
+    gender = request.form.get("gender")
+
+    print(username)
+    print(name)
+    print(last_name)
+    print(telephone)
+    print(address)
+    print(birthday)
+    print(gender)
+
+    modify_user = User().modify_user_information(username, name, last_name, telephone, address, birthday, gender)
+    return jsonify(modify_user)
 
 
 ########################################################################
