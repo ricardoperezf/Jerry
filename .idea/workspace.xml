@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="afff5104-962a-47b1-9973-a3553dcf4242" name="Default Changelist" comment="Merge remote-tracking branch 'origin/jesus'&#10;&#10;# Conflicts:&#10;#&#9;jerry/controllers/example.py">
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jerry/controllers/users.py" beforeDir="false" afterPath="$PROJECT_DIR$/jerry/controllers/users.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jerry/models/Card.py" beforeDir="false" afterPath="$PROJECT_DIR$/jerry/models/Card.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jerry/models/Preference.py" beforeDir="false" afterPath="$PROJECT_DIR$/jerry/models/Preference.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jerry/templates/myCards.html" beforeDir="false" afterPath="$PROJECT_DIR$/jerry/templates/myCards.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jerry/templates/myInformation.html" beforeDir="false" afterPath="$PROJECT_DIR$/jerry/templates/myInformation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jerry/templates/myPreferences.html" beforeDir="false" afterPath="$PROJECT_DIR$/jerry/templates/myPreferences.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jerry/models/User.py" beforeDir="false" afterPath="$PROJECT_DIR$/jerry/models/User.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,8 +52,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/jerry/models/User.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="60" column="52" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="52" />
+            <state>
+              <caret line="74" column="31" selection-start-line="74" selection-start-column="31" selection-end-line="74" selection-end-column="31" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
               </folding>
@@ -584,8 +577,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/jerry/models/User.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="60" column="52" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="52" />
+        <state>
+          <caret line="74" column="31" selection-start-line="74" selection-start-column="31" selection-end-line="74" selection-end-column="31" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>
