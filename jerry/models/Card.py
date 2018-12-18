@@ -20,14 +20,14 @@ class Card:
                            "expiration_date": expiration_date, "account_type": account_type, "brand": brand}
         if account_list_len is not None:
             print(self.username)
-            find_username = {"username": self.username, "account": {"id": id}}
-            new_values = {"$set": {"account": {"account_number" : document_values["account_number"],
-                                               "account_type": document_values["account_type"],
-                                               "brand": document_values["brand"],
-                                               "card_number": document_values["card_number"],
-                                               "cvv": document_values["cvv"],
-                                               "expiration_date": document_values["expiration_date"]}}}
-            insert_user = collection.update_one(find_username, new_values)
+            username_values = {"username": username, "account.id": id}
+            new_values = {"$set": {"account.$.account_number": document_values["account_number"],
+                                   "account.$.account_type": document_values["account_type"],
+                                   "account.$.brand": document_values["brand"],
+                                   "account.$.card_number": document_values["card_number"],
+                                   "account.$.cvv": document_values["cvv"],
+                                   "account.$.expiration_date": document_values["expiration_date"]}}
+            insert_user = collection.update_one(username_values, new_values)
             return "Modificado"
         else:
             return False
