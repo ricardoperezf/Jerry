@@ -17,7 +17,7 @@ def get_discipline_city():
     for q in cursor:
         print(q)
         vector.append({
-            'ID_USUARIO': q["ID_USUARIO"]
+            'account': q["account.$.id"]
         })
 
     return jsonify(vector)
@@ -30,8 +30,8 @@ def get_discipline_test():
     for q in cursor:
         print(q)
         vector.append({
-            'name': q["name"],
-            'lastname': q["lastname"]
+            'username': q["username"],
+            'password': q["password"]
         })
 
     return jsonify(vector)

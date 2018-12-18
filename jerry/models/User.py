@@ -53,13 +53,33 @@ class User:
         else:
             return False
 
-    def modify_user_information(self, username, name, last_name, address, birthday, gender, telephone):
-        find_username = {"username": self.username}
-        new_values = {
-            "$set": {"username": username, "name": name, "lastname": last_name, "address": address, "birthday": birthday,
-                  "gender": gender, "telphone": telephone}}
-        insert_user = collection.update_one(find_username, new_values)
-        return "Modificado"
+    def modify_user(self, username, name, last_name, telephone, address, birthday, gender):
+        username_query = {"username": username}
+        username_exits = collection.find_one(username_query)
+        print(username_exits)
+        if username_exits is not None:
+            document_values = {"username": username,"name": name, "last_name": last_name, "telephone": telephone,
+                               "address": address, "birthday": birthday, "gender": gender}
+            new_values = self.set_new_values(document_values)
+            collection.update_one(username_exits, new_values)
+            user_information = {"username": username_exits["username"], "name": username_exits["name"],
+                                "last_name": username_exits["last_name"], "telephone": username_exits["telephone"],
+                                "address": username_exits["address"], "birthday": username_exits["birthday"],
+                                "gender": username_exits["gender"]}
+            return user_information
+        else:
+            return False
+
+    @staticmethod
+    def set_new_values(value_list):
+        new_values = {"$set": {"username": value_list["username"],
+                               "name": value_list["name"],
+                               "last_name": value_list["last_name"],
+                               "telephone": value_list["telephone"],
+                               "address": value_list["address"],
+                               "birthday": value_list["birthday"],
+                               "gender": value_list["gender"]}}
+        return new_values
 
 
 class UserCreation(User):
@@ -76,9 +96,7 @@ class UserCreation(User):
         self.gender = gender
 
     def sign_up(self):
-        print(self.username)
         username_exits = self.find_user(self.username)
-        print(username_exits)
         print(username_exits)
         if username_exits is None:
             self.password = self.hash_password(self.password)
@@ -100,11 +118,13 @@ class UserCreation(User):
             return False
 
 
+
+
 class UserInformation:
     def get_user_information(self):
         user_cursor = collection.find()
         vector = []
         for user in user_cursor:
             # print(user)
-            vector.append({'name': user["name"], 'lastname': user["lastname"]})
+            vector.append({'name': user["name"], 'last_name': user["last_name"]})
         return vector
