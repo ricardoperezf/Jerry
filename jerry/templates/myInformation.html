@@ -22,69 +22,73 @@
     <div class="row align-items-start">
         <div class="col">
             <form action="http://127.0.0.1:5000/modify" method="POST">
-            <div class="input-group input-group-sm mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Usuario</span>
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Usuario</span>
+                    </div>
+                    <input name="username" type="text" class="form-control" aria-label="Sizing example input"
+                           aria-describedby="inputGroup-sizing-sm" value="{{information['username']}} ">
+                    </div>
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Nombre</span>
+                    </div>
+                    <input name="name" type="text" class="form-control" aria-label="Sizing example input"
+                           aria-describedby="inputGroup-sizing-sm" value="{{information['name']}}">
                 </div>
-                <input name="username" type="text" class="form-control" aria-label="Sizing example input"
-                       aria-describedby="inputGroup-sizing-sm" value="{{information['username']}}">
-            </div>
-            <div class="input-group input-group-sm mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Nombre</span>
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Apellido</span>
+                    </div>
+                    <input name="last_name" type="text" class="form-control" aria-label="Sizing example input"
+                           aria-describedby="inputGroup-sizing-sm" value="{{information['last_name']}}">
                 </div>
-                <input name="name" type="text" class="form-control" aria-label="Sizing example input"
-                       aria-describedby="inputGroup-sizing-sm" value="{{information['name']}}">
-            </div>
-            <div class="input-group input-group-sm mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Apellido</span>
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Teléfono</span>
+                    </div>
+                    <input name="telephone" type="text" class="form-control" aria-label="Sizing example input"
+                           aria-describedby="inputGroup-sizing-sm" value="{{information['telephone']}}">
                 </div>
-                <input name="last_name" type="text" class="form-control" aria-label="Sizing example input"
-                       aria-describedby="inputGroup-sizing-sm" value="{{information['last_name']}}">
-            </div>
-            <div class="input-group input-group-sm mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Teléfono</span>
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Dirección</span>
+                    </div>
+                    <input name="address" type="text" class="form-control" aria-label="Sizing example input"
+                           aria-describedby="inputGroup-sizing-sm" value="{{information['address']}}">
                 </div>
-                <input name="telephone" type="text" class="form-control" aria-label="Sizing example input"
-                       aria-describedby="inputGroup-sizing-sm" value="{{information['telephone']}}">
-            </div>
-            <div class="input-group input-group-sm mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Dirección</span>
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Fecha de nacimiento</span>
+                    </div>
+                    <input name="birthday" type="date" class="form-control" aria-label="Sizing example input"
+                           aria-describedby="inputGroup-sizing-sm" value="{{information['birthday']}}">
                 </div>
-                <input name="address" type="text" class="form-control" aria-label="Sizing example input"
-                       aria-describedby="inputGroup-sizing-sm" value="{{information['address']}}">
-            </div>
-            <div class="input-group input-group-sm mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Fecha de nacimiento</span>
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Género</span>
+                    </div>
+                    Masculino<input name="gender" type="radio" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm" value="M">
+                    Femenino<input name="gender" type="radio" class="form-control" aria-label="Sizing example input"
+                                   aria-describedby="inputGroup-sizing-sm" value="F"/>
+                    Otros<input name="gender" type="radio" class="form-control" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-sm" value="O"/>
                 </div>
-                <input name="birthday" type="date" class="form-control" aria-label="Sizing example input"
-                       aria-describedby="inputGroup-sizing-sm" value="{{information['birthday']}}">
-            </div>
-            <div class="input-group input-group-sm mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Género</span>
-                </div>
-                Masculino<input name="gender" type="radio" class="form-control" aria-label="Sizing example input"
-                       aria-describedby="inputGroup-sizing-sm" value="M">
-                Femenino<input name="gender" type="radio" class="form-control" aria-label="Sizing example input"
-                       aria-describedby="inputGroup-sizing-sm" value="F"/>
-                Otros<input name="gender" type="radio" class="form-control" aria-label="Sizing example input"
-                       aria-describedby="inputGroup-sizing-sm" value="O"/>
-            </div>
-            <input type="submit" formaction="http://127.0.0.1:5000/modify" formmethod="POST" value="Guardar"/>
+                <input type="submit" formaction="http://127.0.0.1:5000/modify" formmethod="POST" value="Guardar"/>
             </form>
         </div>
     </div>
 </div>
 <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 </body>
 </html>
