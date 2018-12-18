@@ -58,11 +58,11 @@ class User:
         username_exits = collection.find_one(username_query)
         print(username_exits)
         if username_exits is not None:
-            document_values = {"username": username, "name": name, "last_name": last_name, "telephone": telephone,
+            document_values = {"name": name, "last_name": last_name, "telephone": telephone,
                                "address": address, "birthday": birthday, "gender": gender}
             new_values = self.set_new_values(document_values)
             collection.update_one(username_exits, new_values)
-            user_information = {"username": username_exits["username"], "name": username_exits["name"],
+            user_information = {"name": username_exits["name"],
                                 "last_name": username_exits["last_name"], "telephone": username_exits["telephone"],
                                 "address": username_exits["address"], "birthday": username_exits["birthday"],
                                 "gender": username_exits["gender"]}
@@ -72,8 +72,7 @@ class User:
 
     @staticmethod
     def set_new_values(value_list):
-        new_values = {"$set": {"username": value_list["username"],
-                               "name": value_list["name"],
+        new_values = {"$set": {"name": value_list["name"],
                                "last_name": value_list["last_name"],
                                "telephone": value_list["telephone"],
                                "address": value_list["address"],
