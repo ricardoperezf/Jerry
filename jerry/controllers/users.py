@@ -113,7 +113,6 @@ def modify_Preference():
 
 @jerry_app.route("/modify", methods=["POST"])
 def modify_User():
-    username = request.form.get("username")
     name = request.form.get("name")
     last_name = request.form.get("last_name")
     telephone = request.form.get("telephone")
