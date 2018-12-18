@@ -42,10 +42,10 @@ def sign_up():
 
     user_not_exits = UserCreation(usuario, contra, name, last_name,
                                   telephone, address, birthday, gender).sign_up()
-    if user_not_exits:
-        return user_not_exits, 201
+    if user_not_exits == "Not exits":
+        return render_template("signin.html")
     else:
-        return jsonify(user_not_exits), 401
+        return render_template("signup.html", user_exits=user_not_exits)
 
 
 # @jerry_app.route("/add_modify_card", methods=["POST"])
