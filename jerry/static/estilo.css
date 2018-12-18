@@ -1,4 +1,4 @@
-input[type=text], input[type=date],input[type=number], select {
+input[type=text], input[type=date],input[type=number], input[type=email], select {
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;

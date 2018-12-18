@@ -93,7 +93,8 @@
                                 <br/>
                                 <input name="expiration_date" type="date" placeholder="Fecha de expiración"/>
                                 <br/>
-                                <input name="account_type" type="number" placeholder="Tipo de cuenta"/>
+                                Debito<input name="account_type" type="radio" value="DEBITO">
+                                Credito<input name="account_type" type="radio" value="CREDITO"/>
                                 <br/>
                                 Visa<input name="brand" type="radio" value="VISA">
                                 Mastercard<input name="brand" type="radio" value="MASTERCARD"/>
@@ -119,17 +120,19 @@
                     <div class="modal-body">
                         <form action="http://127.0.0.1:5000/modifycard" method="POST">
                             <div style="text-align: center;">
-                                <input id="account_number" name="account_number2" type="text" placeholder="Número de cuenta"/>
+                                <input id="account_number" name="account_number2" type="number" placeholder="Número de cuenta"/>
                                 <br/>
-                                <input id="card_number" name="card_number2" type="text" placeholder="Número de tarjeta"/>
+                                <input id="card_number" name="card_number2" type="number" placeholder="Número de tarjeta"/>
                                 <br/>
-                                <input id="cvv" name="cvv2" type="text" placeholder="CVV"/>
+                                <input id="cvv" name="cvv2" type="number" placeholder="CVV"/>
                                 <br/>
-                                <input id="exp" name="expiration_date2" type="text" placeholder="Fecha de expiración"/>
+                                <input id="exp" name="expiration_date2" type="date" placeholder="Fecha de expiración"/>
                                 <br/>
-                                <input id="account_type" name="account_type2" type="text" placeholder="Tipo de cuenta"/>
+                                Debito<input input name="account_type2" type="radio" value="DEBITO">
+                                Credito<input input name="account_type2" type="radio" value="CREDITO"/>
                                 <br/>
-                                <input id="brand" name="brand2" type="text" placeholder="Marca"/>
+                                Visa<input name="brand2" type="radio" value="VISA">
+                                Mastercard<input name="brand2" type="radio" value="MASTERCARD"/>
                                 <br/>
                                 <input id="id" name="id" type="hidden" placeholder="Marca"/>
                                 <br/>

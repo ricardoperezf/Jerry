@@ -1,5 +1,5 @@
 from jerry import collection
-from passlib.apps import custom_app_context as pwd_context
+from passlib.hash import cisco_type7
 
 
 class Card:
@@ -60,12 +60,12 @@ class Card:
     @staticmethod
     def set_new_values(index_array, index_id, value_list):
         new_values = {"$set": {"account." + str(index_array) + ".id": str(index_id),
-                               "account." + str(index_array) + ".account_number": pwd_context.encrypt(value_list["account_number"]),
-                               "account." + str(index_array) + ".account_type": pwd_context.encrypt(value_list["account_type"]),
-                               "account." + str(index_array) + ".brand": pwd_context.encrypt(value_list["brand"]),
-                               "account." + str(index_array) + ".card_number": pwd_context.encrypt(value_list["card_number"]),
-                               "account." + str(index_array) + ".cvv": pwd_context.encrypt(value_list["cvv"]),
-                               "account." + str(index_array) + ".expiration_date": pwd_context.encrypt(value_list["expiration_date"])}}
+                               "account." + str(index_array) + ".account_number": cisco_type7.hash(value_list["account_number"]),
+                               "account." + str(index_array) + ".account_type": cisco_type7.hash(value_list["account_type"]),
+                               "account." + str(index_array) + ".brand": cisco_type7.hash(value_list["brand"]),
+                               "account." + str(index_array) + ".card_number": cisco_type7.hash(value_list["card_number"]),
+                               "account." + str(index_array) + ".cvv": cisco_type7.hash(value_list["cvv"]),
+                               "account." + str(index_array) + ".expiration_date": cisco_type7.hash(value_list["expiration_date"])}}
         return new_values
 
     @staticmethod
@@ -73,8 +73,16 @@ class Card:
         username_query = {"username": username}
         username_information = collection.find_one(username_query)
         account_list = username_information['account']
+        solved_list = []
+        for i in range(len(username_information['account'])):
+            solved_list.append({"account_number": cisco_type7.decode(account_list[i]["account_number"]),
+                                "account_type": cisco_type7.decode(account_list[i]["account_type"]),
+                                "brand": cisco_type7.decode(account_list[i]["brand"]),
+                                "card_number": cisco_type7.decode(account_list[i]["card_number"]),
+                                "cvv": cisco_type7.decode(account_list[i]["cvv"]),
+                                "expiration_date": cisco_type7.decode(account_list[i]["expiration_date"])})
         # print(account_list)
-        return account_list
+        return solved_list
 
     def delete_card(self, username, id):
         username_query = {"username": username}
