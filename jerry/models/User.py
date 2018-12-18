@@ -58,7 +58,7 @@ class User:
         username_exits = collection.find_one(username_query)
         print(username_exits)
         if username_exits is not None:
-            document_values = {"username": username,"name": name, "last_name": last_name, "telephone": telephone,
+            document_values = {"username": username, "name": name, "last_name": last_name, "telephone": telephone,
                                "address": address, "birthday": birthday, "gender": gender}
             new_values = self.set_new_values(document_values)
             collection.update_one(username_exits, new_values)
@@ -112,12 +112,10 @@ class UserCreation(User):
                 "account": [],
                 "preferences": []
             }
-            insert_user = collection.insert_one(new_user_query)
-            return render_template("signin.html")
+            collection.insert_one(new_user_query)
+            return "Not exits"
         else:
-            return False
-
-
+            return "Exits"
 
 
 class UserInformation:
