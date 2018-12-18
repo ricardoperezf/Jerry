@@ -5,11 +5,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Poppins" rel="stylesheet">
     <title>Jerry</title>
 </head>
 <body>
 <div class="topnav">
-    <a href="{{ url_for('get_my_cards') }}">Mis tarjetas</a>
+    <p>Jerry</p>
     <a href="{{ url_for('get_my_cards') }}">Mis tarjetas</a>
     <a href="{{ url_for('get_preferences') }}">Mis preferencias</a>
     <a href="#">Mis sugerencias</a>
@@ -44,10 +45,16 @@
                     <td>{{ i["account_type"]}}</td>
                     <td>{{ i["brand"]}}</td>
                     <td>
-                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
-                                data-target="#cardsEditModal" data-id="{{ i['id'] }}">Editar
+                        <button type="button" class="btn btn-primary btn-sm btn-card" data-toggle="modal"
+                                data-target="#cardsEditModal" data-account-n="{{ i['account_number'] }}"
+                                data-card="{{ i['card_number'] }}" data-cvv="{{ i['cvv']}}"
+                                data-exp="{{ i['expiration_date']}}" data-account-t="{{ i['account_type']}}"
+                                data-brand="{{ i['brand']}}">Editar
                         </button>
                         <form action="http://127.0.0.1:5000/delete_my_cards/{{ i['id'] }}" method="POST">
+                            <div style="text-align: center;">
+                                <input type="submit" value="Submit">
+                            </div>
                             <button type="submit" class="btn btn-danger btn-sm" data-id="{{ i['id'] }}">{{
                                 i['id'] }} Eliminar
                             </button>
@@ -109,19 +116,19 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="http://127.0.0.1:5000/modifycard/{{ i['id'] }}" method="POST">
+                        <form action="http://127.0.0.1:5000/add_cards" method="POST">
                             <div style="text-align: center;">
-                                <input name="account_number" type="text" placeholder="Número de cuenta"/>
+                                <input id="account_number" name="account_number" type="text" placeholder="Número de cuenta"/>
                                 <br/>
-                                <input name="card_number" type="text" placeholder="Número de tarjeta"/>
+                                <input id="card_number" name="card_number" type="text" placeholder="Número de tarjeta"/>
                                 <br/>
-                                <input name="cvv" type="text" placeholder="CVV"/>
+                                <input id="cvv" name="cvv" type="text" placeholder="CVV"/>
                                 <br/>
-                                <input name="expiration_date" type="text" placeholder="Fecha de expiración"/>
+                                <input id="exp" name="expiration_date" type="text" placeholder="Fecha de expiración"/>
                                 <br/>
-                                <input name="account_type" type="text" placeholder="Tipo de cuenta"/>
+                                <input id="account_type" name="account_type" type="text" placeholder="Tipo de cuenta"/>
                                 <br/>
-                                <input name="brand" type="text" placeholder="Marca"/>
+                                <input id="brand" name="brand" type="text" placeholder="Marca"/>
                                 <br/>
                                 <input type="submit" value="Submit">
                             </div>
@@ -136,14 +143,27 @@
 <footer>
     Desarrollado por: Apple Eaters, 2018
 </footer>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script type="application/javascript">
+	jQuery(function ($) {
+
+		$(document).ready(function () {
+			$('.btn-card').on('click',function(){
+                $("#account_number").val(($(this).data('account-n')));
+                $("#card_number").val(($(this).data('card')));
+                $("#cvv").val(($(this).data('cvv')));
+                $("#exp").val(($(this).data('exp')));
+                $("#account_type").val(($(this).data('account-t')));
+                $("#brand").val(($(this).data('brand')));
+            });
+		});
+
+	});
+</script>
 </body>
 </html>

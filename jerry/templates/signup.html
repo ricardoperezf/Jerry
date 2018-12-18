@@ -11,17 +11,21 @@
 <div class="row login-title">
 	<h1>Jerry</h1>
 </div>
-<div class="row container-fluid">
-    <div class="col-md-12">
+
 <form action="http://127.0.0.1:5000/signup" method="POST">
-    <div style="text-align: center;">
-        <p>Inserte los datos</p>
+    <h3 class="signup-title">Inserte los datos</h3>
+    <div class="row">
+    <div class="col-md-6" style="text-align: center;">
         <input name="username" type="text" placeholder="Usuario"/>
         <br/>
         <input name="password" type="password" placeholder="Contraseña"/>
         <br/>
         <input name="confirm_password" type="password" placeholder="Confirmar contraseña"/>
         <br/>
+        <input name="birthday" type="date" placeholder="Fecha De nacimiento"/>
+        <br/>
+    </div>
+    <div class="col-md-6" style="text-align: center;">
         <input name="name" type="text" placeholder="Nombre"/>
         <br/>
         <input name="last_name" type="text" placeholder="Apellido"/>
@@ -30,19 +34,19 @@
         <br/>
         <input name="address" type="text" placeholder="Direccion"/>
         <br/>
-        <input name="birthday" type="date" placeholder="Fecha De nacimiento"/>
-        <br/>
+    </div>
+    <div class="col-md-12" style="text-align: center;">
         <p>Genero</p>
         Masculino<input name="gender" type="radio" value="M">
         Femenino<input name="gender" type="radio" value="F"/>
         Otros<input name="gender" type="radio" value="O"/>
         <br/>
-        <input type="submit" value="Submit">
+        <button class="btn btn-success" type="submit">Registrar</button>
         <a href="/" class="btn btn-primary">Volver</a>
     </div>
-</form>
-    </div>
+
 </div>
+</form>
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -54,7 +58,7 @@
 
 
 		$(document).ready(function () {
-			$('.col-md-12').fadeIn(500);
+			$('.col-md-6, .col-md-12').fadeIn(500);
 		});
 
 	});
