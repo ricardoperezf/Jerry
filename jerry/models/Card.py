@@ -28,12 +28,12 @@ class Card:
         if account_list_len is not None:
             print(self.username)
             username_values = {"username": username, "account.id": id}
-            new_values = {"$set": {"account.$.account_number": document_values["account_number"],
-                                   "account.$.account_type": document_values["account_type"],
-                                   "account.$.brand": document_values["brand"],
-                                   "account.$.card_number": document_values["card_number"],
-                                   "account.$.cvv": document_values["cvv"],
-                                   "account.$.expiration_date": document_values["expiration_date"]}}
+            new_values = {"$set": {"account.$.account_number": cisco_type7.hash(document_values["account_number"]),
+                                   "account.$.account_type": cisco_type7.hash(document_values["account_type"]),
+                                   "account.$.brand": cisco_type7.hash(document_values["brand"]),
+                                   "account.$.card_number": cisco_type7.hash(document_values["card_number"]),
+                                   "account.$.cvv": cisco_type7.hash(document_values["cvv"]),
+                                   "account.$.expiration_date": cisco_type7.hash(document_values["expiration_date"])}}
             insert_user = collection.update_one(username_values, new_values)
             return "Modificado"
         else:
@@ -75,7 +75,8 @@ class Card:
         account_list = username_information['account']
         solved_list = []
         for i in range(len(username_information['account'])):
-            solved_list.append({"account_number": cisco_type7.decode(account_list[i]["account_number"]),
+            solved_list.append({"id": account_list[i]["id"],
+                                "account_number": cisco_type7.decode(account_list[i]["account_number"]),
                                 "account_type": cisco_type7.decode(account_list[i]["account_type"]),
                                 "brand": cisco_type7.decode(account_list[i]["brand"]),
                                 "card_number": cisco_type7.decode(account_list[i]["card_number"]),
