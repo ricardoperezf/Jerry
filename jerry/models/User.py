@@ -104,8 +104,8 @@ class UserCreation(User):
                 "username": self.username,
                 "password": self.password,
                 "name": self.name,
-                "lastname": self.last_name,
-                "telphone": self.telephone,
+                "last_name": self.last_name,
+                "telephone": self.telephone,
                 "address": self.address,
                 "birthday": self.birthday,
                 "gender": self.gender,
@@ -126,5 +126,5 @@ class UserInformation:
         vector = []
         for user in user_cursor:
             # print(user)
-            vector.append({'name': user["name"], 'lastname': user["lastname"]})
+            vector.append({'name': user["name"], 'last_name': user["last_name"]})
         return vector
