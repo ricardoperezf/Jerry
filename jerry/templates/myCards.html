@@ -52,11 +52,7 @@
                                 data-brand="{{ i['brand']}}">Editar
                         </button>
                         <form action="http://127.0.0.1:5000/delete_my_cards/{{ i['id'] }}" method="POST">
-                            <div style="text-align: center;">
-                                <input type="submit" value="Submit">
-                            </div>
-                            <button type="submit" class="btn btn-danger btn-sm" data-id="{{ i['id'] }}">{{
-                                i['id'] }} Eliminar
+                            <button type="submit" class="btn btn-danger btn-sm" data-id="{{ i['id'] }}">Eliminar
                             </button>
                         </form>
                     </td>
@@ -118,7 +114,8 @@
                     <div class="modal-body">
                         <form action="http://127.0.0.1:5000/add_cards" method="POST">
                             <div style="text-align: center;">
-                                <input id="account_number" name="account_number" type="text" placeholder="Número de cuenta"/>
+                                <input id="account_number" name="account_number" type="text"
+                                       placeholder="Número de cuenta"/>
                                 <br/>
                                 <input id="card_number" name="card_number" type="text" placeholder="Número de tarjeta"/>
                                 <br/>
@@ -144,16 +141,20 @@
     Desarrollado por: Apple Eaters, 2018
 </footer>
 <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 <script type="application/javascript">
-	jQuery(function ($) {
+    jQuery(function ($) {
 
-		$(document).ready(function () {
-			$('.btn-card').on('click',function(){
+        $(document).ready(function () {
+            $('.btn-card').on('click', function () {
                 $("#account_number").val(($(this).data('account-n')));
                 $("#card_number").val(($(this).data('card')));
                 $("#cvv").val(($(this).data('cvv')));
@@ -161,9 +162,9 @@
                 $("#account_type").val(($(this).data('account-t')));
                 $("#brand").val(($(this).data('brand')));
             });
-		});
+        });
 
-	});
+    });
 </script>
 </body>
 </html>
