@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="topnav">
-    <p>Jerry</p>
+    <a href="{{ url_for('get_my_cards') }}">Mis tarjetas</a>
     <a href="{{ url_for('get_my_cards') }}">Mis tarjetas</a>
     <a href="{{ url_for('get_preferences') }}">Mis preferencias</a>
     <a href="#">Mis sugerencias</a>
@@ -45,12 +45,9 @@
                     <td>{{ i["brand"]}}</td>
                     <td>
                         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
-                                data-target="#cardsEditModal">Editar
+                                data-target="#cardsEditModal" data-id="{{ i['id'] }}">Editar
                         </button>
                         <form action="http://127.0.0.1:5000/delete_my_cards/{{ i['id'] }}" method="POST">
-                            <div style="text-align: center;">
-                                <input type="submit" value="Submit">
-                            </div>
                             <button type="submit" class="btn btn-danger btn-sm" data-id="{{ i['id'] }}">{{
                                 i['id'] }} Eliminar
                             </button>
@@ -112,7 +109,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="http://127.0.0.1:5000/add_cards" method="POST">
+                        <form action="http://127.0.0.1:5000/modifycard/{{ i['id'] }}" method="POST">
                             <div style="text-align: center;">
                                 <input name="account_number" type="text" placeholder="Número de cuenta"/>
                                 <br/>

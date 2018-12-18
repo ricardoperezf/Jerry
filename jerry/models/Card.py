@@ -12,12 +12,21 @@ class Card:
         self.brand = ""
         self.username = ""
 
-    def add_modify_card(self):
-        print(self.username)
-        if self.username is not None:
+    def modify_card(self, account_number, card_number, cvv, expiration_date, account_type, brand, username, id):
+        username_query = {"username": username}
+        username_information = collection.find_one(username_query)
+        account_list_len = len(username_information['account'])
+        document_values = {"account_number": account_number, "card_number": card_number, "cvv": cvv,
+                           "expiration_date": expiration_date, "account_type": account_type, "brand": brand}
+        if account_list_len is not None:
             print(self.username)
-            find_username = {"username": self.username}
-            new_values = {"$": {"account.accountNumber": self.account_number}}
+            find_username = {"username": self.username, "account": {"id": id}}
+            new_values = {"$set": {"account": {"account_number" : document_values["account_number"],
+                                               "account_type": document_values["account_type"],
+                                               "brand": document_values["brand"],
+                                               "card_number": document_values["card_number"],
+                                               "cvv": document_values["cvv"],
+                                               "expiration_date": document_values["expiration_date"]}}}
             insert_user = collection.update_one(find_username, new_values)
             return "Modificado"
         else:
@@ -68,14 +77,9 @@ class Card:
         if account_list is not None:
             account_query = \
                 {
-                    "$pop":
+                    "$pull":
                         {
-                            "account": "1"
-                            [
-                                {
-                                    "id": "1"
-                                }
-                            ]
+                            "account": {"id": id}
                         }
                 }
             collection.update(username_query, account_query)

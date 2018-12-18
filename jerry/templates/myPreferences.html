@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="topnav">
-    <p>Jerry</p>
+    <a href="{{ url_for('get_my_cards') }}">Mis tarjetas</a>
     <a href="{{ url_for('get_my_cards') }}">Mis tarjetas</a>
     <a href="{{ url_for('get_preferences') }}">Mis preferencias</a>
     <a href="#">Mis sugerencias</a>
@@ -38,8 +38,14 @@
                     <td>{{ i["amount"] }}</td>
                     <td>{{ i["term"]}}</td>
                     <td>
-                        <button type="button" class="btn btn-primary btn-sm">Editar</button>
-                        <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
+                        <form action="http://127.0.0.1:5000/modifypPreference/{{ i['id'] }}" method="POST">
+                            <button type="submit" class="btn btn-primary btn-sm" data-id="{{ i['id'] }}">Editar</button>
+                        </form>
+                        <form action="http://127.0.0.1:5000/delete_my_preferences/{{ i['id'] }}" method="POST">
+                            <button type="submit" class="btn btn-danger btn-sm" data-id="{{ i['id'] }}">{{
+                                i['id'] }} Eliminar
+                            </button>
+                        </form>
                     </td>
                 </tr>
                 {% endfor %}
@@ -71,7 +77,6 @@
                                 <input name="amount" type="text" placeholder="Cantidad de dinero"/>
                                 <br/>
                                 <input name="term" type="text" placeholder="Plazo"/>
-                                <br/>
                                 <br/>
                                 <input type="submit" value="Submit">
                             </div>
