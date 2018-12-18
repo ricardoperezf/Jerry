@@ -24,7 +24,8 @@ def log_in():
     if user_logged_in == "Hizo match":
         return render_template("index.html")
     else:
-        return jsonify(user_logged_in), 404
+        print(user_logged_in)
+        return render_template("signin.html", login=user_logged_in)
 
 
 @jerry_app.route("/signup", methods=["POST"])
@@ -81,6 +82,7 @@ def add_cards():
     else:
         return jsonify(add_new_card)
 
+
 @jerry_app.route("/modifycard/<id>", methods=["POST"])
 def modify_Card(id):
     account_number = request.form.get("account_number")
@@ -91,11 +93,12 @@ def modify_Card(id):
     brand = request.form.get("brand")
 
     add_new_card = Card().modify_card(account_number, card_number, cvv, expiration_date,
-                                   account_type, brand, username, id)
+                                      account_type, brand, username, id)
     if add_new_card == "Modificado":
         return render_template("myCards.html")
     else:
         return jsonify(add_new_card)
+
 
 @jerry_app.route("/modifypPreference/<id>", methods=["POST"])
 def modify_Preference(id):
@@ -108,6 +111,7 @@ def modify_Preference(id):
     else:
         return jsonify(add_new_card)
 
+
 @jerry_app.route("/modify", methods=["POST"])
 def modify_User():
     username = request.form.get("username")
@@ -119,7 +123,7 @@ def modify_User():
     gender = request.form.get("gender")
 
     add_new_card = User().modify_user(username, name, last_name, telephone,
-                                   address, birthday, gender)
+                                      address, birthday, gender)
     information = User().get_user_information(username)
     if information is not False:
         return render_template("myInformation.html", information=information)
@@ -145,6 +149,7 @@ def delete_my_cards(id):
         return render_template("index.html")
     else:
         return jsonify(delete_card)
+
 
 @jerry_app.route("/delete_my_preferences/<id>", methods=["POST"])
 def delete_my_preferences(id):
@@ -193,6 +198,7 @@ def user_information():
         return render_template("myInformation.html", information=information)
     else:
         return jsonify(information)
+
 
 @jerry_app.route("/modify_information", methods=["POST"])
 def modify_information():

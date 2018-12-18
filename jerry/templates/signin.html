@@ -1,50 +1,73 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css?family=Lato|Poppins" rel="stylesheet">
-	<title>Login</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Poppins" rel="stylesheet">
+    <title>Login</title>
 </head>
 <body class="signin">
 <div class="row login-title">
-	<h1>Jerry</h1>
+    <h1>Jerry</h1>
 </div>
+{% if login == 'No hizo match' or login == 'No existe' %}
+<div class="container">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-10">
+            <div class="alert alert-dark" role="alert">
+                Usuario invalido
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+{% endif%}
 <div class="row container-fluid">
-	<div class="col-md-6 col-md-push-6">
-		<img src="{{ url_for('static', filename='pagando.jpg') }}" alt="Cinque Terre">
-	</div>
-	<div class="col-md-6 col-md-pull-6">
-		<form>
-		<p style="color: white">Log In</p>
-		<input name="username" type="text" placeholder="Usuario" id="fname"/>
-		<br/>
-		<input name="password" type="password" placeholder="Contraseña" id="lname"/>
-		<br/>
-			<button class="btn btn-success" type="submit" formaction="http://127.0.0.1:5000/login" formmethod="POST">Entrar</button>
-			<button class="btn btn-primary" type="submit" formaction="http://127.0.0.1:5000/paginasignup" formmethod="POST">Registrar</button>
-		</form>
-	</div>
+    <div class="col-md-6 col-md-push-6">
+        <img src="{{ url_for('static', filename='pagando.jpg') }}" alt="Cinque Terre">
+    </div>
+
+    <div class="col-md-6 col-md-pull-6">
+        <form>
+            <p style="color: white">Log In</p>
+            <input name="username" type="text" placeholder="Usuario" id="fname"/>
+            <br/>
+            <input name="password" type="password" placeholder="Contraseña" id="lname"/>
+            <br/>
+            <button class="btn btn-success" type="submit" formaction="http://127.0.0.1:5000/login" formmethod="POST">
+                Entrar
+            </button>
+            <button class="btn btn-primary" type="submit" formaction="http://127.0.0.1:5000/paginasignup"
+                    formmethod="POST">Registrar
+            </button>
+        </form>
+    </div>
 </div>
 <footer>
-	<strong>Desarrollado por: Apple Eaters, 2018</strong>
+    <strong>Desarrollado por: Apple Eaters, 2018</strong>
 </footer>
 <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 <script type="application/javascript">
-	jQuery(function ($) {
+    jQuery(function ($) {
 
 
-		$(document).ready(function () {
-			$('.col-md-6').fadeIn(500);
-		});
+        $(document).ready(function () {
+            $('.col-md-6').fadeIn(500);
+        });
 
-	});
+    });
 </script>
 </body>
 </html>
