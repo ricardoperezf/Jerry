@@ -85,17 +85,18 @@
                     <div class="modal-body">
                         <form action="http://127.0.0.1:5000/add_cards" method="POST">
                             <div style="text-align: center;">
-                                <input name="account_number" type="text" placeholder="Número de cuenta"/>
+                                <input name="account_number" type="number" placeholder="Número de cuenta"/>
                                 <br/>
-                                <input name="card_number" type="text" placeholder="Número de tarjeta"/>
+                                <input name="card_number" type="number" placeholder="Número de tarjeta"/>
                                 <br/>
-                                <input name="cvv" type="text" placeholder="CVV"/>
+                                <input name="cvv" type="number" placeholder="CVV"/>
                                 <br/>
-                                <input name="expiration_date" type="text" placeholder="Fecha de expiración"/>
+                                <input name="expiration_date" type="date" placeholder="Fecha de expiración"/>
                                 <br/>
-                                <input name="account_type" type="text" placeholder="Tipo de cuenta"/>
+                                <input name="account_type" type="number" placeholder="Tipo de cuenta"/>
                                 <br/>
-                                <input name="brand" type="text" placeholder="Marca"/>
+                                Visa<input name="brand" type="radio" value="VISA">
+                                Mastercard<input name="brand" type="radio" value="MASTERCARD"/>
                                 <br/>
                                 <input type="submit" value="Submit">
                             </div>
