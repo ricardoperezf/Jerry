@@ -55,6 +55,7 @@ class User:
 
     def modify_user(self, username, name, last_name, telephone, address, birthday, gender):
         username_query = {"username": username}
+        print(username_query)
         username_exits = collection.find_one(username_query)
         print(username_exits)
         if username_exits is not None:
