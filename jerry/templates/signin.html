@@ -9,7 +9,7 @@
     <title>Login</title>
 </head>
 <body class="signin">
-<div class="row login-title">
+<div class="row app-title">
     <h1>Jerry</h1>
 </div>
 {% if login == 'No hizo match' or login == 'No existe' %}
@@ -25,16 +25,15 @@
     <div class="col-md-6 col-md-pull-6">
         <form>
             <p style="color: white">Log In</p>
-            <input name="username" type="text" placeholder="Usuario" id="fname"/>
+            <input name="username" type="email" placeholder="Email" id="fname" required/>
             <br/>
-            <input name="password" type="password" placeholder="Contraseña" id="lname"/>
+            <input name="password" type="password" placeholder="Contraseña" id="lname" required/>
             <br/>
             <button class="btn btn-success" type="submit" formaction="http://127.0.0.1:5000/login" formmethod="POST">
                 Entrar
             </button>
-            <button class="btn btn-primary" type="submit" formaction="http://127.0.0.1:5000/paginasignup"
-                    formmethod="POST">Registrar
-            </button>
+            <a href="http://127.0.0.1:5000/paginasignup" class="btn btn-primary">Registrar
+            </a>
         </form>
     </div>
 </div>

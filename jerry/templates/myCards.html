@@ -10,8 +10,8 @@
 </head>
 <body>
 <div class="topnav">
-    <p>Jerry</p>
-    <a href="{{ url_for('get_my_cards') }}">Mis tarjetas</a>
+    <a class="app-a" href="{{ url_for('pp') }}"/><h1 class="app-title">Jerry</h1></a>
+    <a class="active" href="{{ url_for('get_my_cards') }}">Mis tarjetas</a>
     <a href="{{ url_for('get_preferences') }}">Mis preferencias</a>
     <a href="#">Mis sugerencias</a>
     <a href="{{ url_for('user_information') }}">Mi usuario</a>
@@ -23,10 +23,10 @@
 
     </div>
     <div class="row">
-        <div class="col-sm">
+        <div class="col-sm-2">
 
         </div>
-        <div class="col-sm">
+        <div class="col-sm-8">
             <table class="table">
                 <thead class="thead-light">
                 <tr>
@@ -48,7 +48,7 @@
                     <td>{{ i["expiration_date"]}}</td>
                     <td>{{ i["account_type"]}}</td>
                     <td>{{ i["brand"]}}</td>
-                    <td>
+                    <td class="action-buttons">
                         <button type="button" class="btn btn-primary btn-sm btn-card" data-toggle="modal"
                                 data-target="#cardsEditModal" data-account-n="{{ i['account_number'] }}"
                                 data-card="{{ i['card_number'] }}" data-cvv="{{ i['cvv']}}"
@@ -65,8 +65,7 @@
                 </tbody>
             </table>
         </div>
-        <div class=" col-sm
-                            ">
+        <div class=" col-sm-2">
             <a href="{{ url_for('get_my_cards') }}" class="btn btn-primary btn-sm" role="button"
                aria-pressed="true" data-toggle="modal" data-target="#cardsModal">Añadir tarjeta</a>
         </div>
@@ -143,7 +142,7 @@
 </div>
 
 <footer>
-    Desarrollado por: Apple Eaters, 2018
+    <strong>Desarrollado por: Apple Eaters, 2018</strong>
 </footer>
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"

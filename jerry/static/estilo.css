@@ -1,10 +1,20 @@
-input[type=text], input[type=date], select {
+input[type=text], input[type=date], input[type=email], select {
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+}
+
+input[type=radio]{
+  margin-left:5px;
+  margin-right:20px;
+}
+
+.genero-radio{
+  padding-top:0px;
+  padding-bottom:30px;
 }
 
 /*input[type=submit] {*/
@@ -42,10 +52,13 @@ img{
   height:auto;
 }
 
-.row.login-title{
+.row.app-title{
   display:block;
-  color:white;
   background-color:transparent;
+}
+
+.app-title{
+  color:white;
   text-align:center;
   font-family:'Poppins';
 }
@@ -117,13 +130,20 @@ body{
   color: #f2f2f2;
   text-align: center;
   padding: 14px 16px;
-  text-decoration: none;
+  text-decoration: none !important;
+}
+
+.topnav a:not(.app-a){
+  margin-top:15px;
 }
 
 /* Change color on hover */
-.topnav a:hover {
+.topnav a:hover,  .topnav a.active{
   background-color: #ddd;
   color: black;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
 }
 
 /* Create two columns/boxes that floats next to each other */
@@ -200,4 +220,22 @@ section:after {
 .signup-title{
   text-align:center;
   color:white;
+}
+
+@media (min-width:768px){
+  .col-md-6.first-column{
+    padding-left:25%;
+  }
+  .col-md-6.second-column{
+    padding-right:25%;
+  }
+}
+
+.mensaje-signup{
+  display:none;
+}
+
+.action-buttons button{
+  width:80px;
+  margin:5px 0px;
 }

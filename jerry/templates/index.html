@@ -11,7 +11,7 @@
 <body>
 
 <div class="topnav">
-    <p>Jerry</p>
+    <a class="app-a" href="{{ url_for('pp') }}"/><h1 class="app-title">Jerry</h1></a>
     <a href="{{ url_for('get_my_cards') }}">Mis tarjetas</a>
     <a href="{{ url_for('get_preferences') }}">Mis preferencias</a>
     <a href="#">Mis sugerencias</a>
@@ -21,14 +21,9 @@
 
 
 <section>
-    <nav>
-        <ul>
-            <p>Mayores Gastos</p>
-    </nav>
-
     <article>
-        <h1>Mapa</h1>
-        <div class="a" id="googleMap"></div>
+        <h1>Últimas sugerencias</h1>
+        <!-- <div class="a" id="googleMap"></div> -->
     </article>
 </section>
 

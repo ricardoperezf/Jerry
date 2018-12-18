@@ -13,7 +13,7 @@ def pp():
     return render_template("index.html")
 
 
-@jerry_app.route('/paginasignup', methods=["POST"])
+@jerry_app.route('/paginasignup', methods=["GET"])
 def signup():
     return render_template("signup.html")
 

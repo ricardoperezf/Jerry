@@ -9,7 +9,7 @@
     <title>Sign up</title>
 </head>
 <body class="signup">
-<div class="row login-title">
+<div class="row app-title">
     <h1>Jerry</h1>
 </div>
 
@@ -21,33 +21,37 @@
     </div>
     {% endif %}
     <div class="row">
-        <div class="col-md-6" style="text-align: center;">
-            <input name="username" type="text" placeholder="Usuario"/>
+        <div class="col-md-6 first-column" style="text-align: center;">
+            <input name="username" type="email" placeholder="Email" required/>
             <br/>
-            <input name="password" type="password" placeholder="Contraseña"/>
+            <input id="password" name="password" type="password" placeholder="Contraseña" required/>
             <br/>
-            <input name="confirm_password" type="password" placeholder="Confirmar contraseña"/>
+            <input id="confirm_password" name="confirm_password" type="password" placeholder="Confirmar contraseña" required/>
             <br/>
-            <input name="birthday" type="date" placeholder="Fecha De nacimiento"/>
+            <input name="birthday" type="text" placeholder="Fecha de nacimiento" onfocus="(this.type='date')" required/>
             <br/>
         </div>
-        <div class="col-md-6" style="text-align: center;">
-            <input name="name" type="text" placeholder="Nombre"/>
+        <div class="col-md-6 second-column" style="text-align: center;">
+            <input name="name" type="text" placeholder="Nombre" required/>
             <br/>
-            <input name="last_name" type="text" placeholder="Apellido"/>
+            <input name="last_name" type="text" placeholder="Apellido" required/>
             <br/>
-            <input name="telephone" type="text" placeholder="Telefono"/>
+            <input name="telephone" type="text" placeholder="Telefono" required/>
             <br/>
             <input name="address" type="text" placeholder="Direccion"/>
             <br/>
         </div>
-        <div class="col-md-12" style="text-align: center;">
+        <div class="col-md-12 genero" style="text-align: center;">
+            <div class="mensaje-signup" style="color:red">
+                Las contraseñas no coinciden
+            </div>
             <p>Genero</p>
-            Masculino<input name="gender" type="radio" value="M">
-            Femenino<input name="gender" type="radio" value="F"/>
-            Otros<input name="gender" type="radio" value="O"/>
-            <br/>
-            <button class="btn btn-success" type="submit">Registrar</button>
+            <div class="genero-radio">
+                Masculino<input name="gender" type="radio" value="M">
+                Femenino<input name="gender" type="radio" value="F"/>
+                Otro<input name="gender" type="radio" value="O"/>
+            </div>
+            <button id="signup-submit" class="btn btn-success" type="submit">Registrar</button>
             <a href="/" class="btn btn-primary">Volver</a>
         </div>
 
@@ -66,9 +70,17 @@
 <script type="application/javascript">
     jQuery(function ($) {
 
-
         $(document).ready(function () {
             $('.col-md-6, .col-md-12').fadeIn(500);
+            $('#password, #confirm_password').on('keyup', function () {
+                if (($('#password').val() == $('#confirm_password').val())) {
+                    $('.mensaje-signup').slideUp(300);
+                    $("#signup-submit").prop("disabled",false);
+                  } else{
+                    $('.mensaje-signup').slideDown(300);
+                    $("#signup-submit").prop("disabled",true);
+                  }
+            });
         });
 
     });

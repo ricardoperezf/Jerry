@@ -10,19 +10,19 @@
 </head>
 <body>
 <div class="topnav">
+    <a class="app-a" href="{{ url_for('pp') }}"/><h1 class="app-title">Jerry</h1></a>
     <a href="{{ url_for('get_my_cards') }}">Mis tarjetas</a>
-    <a href="{{ url_for('get_my_cards') }}">Mis tarjetas</a>
-    <a href="{{ url_for('get_preferences') }}">Mis preferencias</a>
+    <a class="active" href="{{ url_for('get_preferences') }}">Mis preferencias</a>
     <a href="#">Mis sugerencias</a>
     <a href="{{ url_for('user_information') }}">Mi usuario</a>
     <a href="{{ url_for('signout') }}">Cerrar sesión</a>
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-sm">
+        <div class="col-sm-2">
 
         </div>
-        <div class="col-sm">
+        <div class="col-sm-8">
             <table class="table">
                 <thead class="thead-light">
                 <tr>
@@ -38,7 +38,7 @@
                     <td>{{ i["category"] }}</td>
                     <td>{{ i["amount"] }}</td>
                     <td>{{ i["term"]}}</td>
-                    <td>
+                    <td class="action-buttons">
                         <button type="button" class="btn btn-primary btn-sm btn-card" data-toggle="modal"
                                 data-target="#preferencesEditModal" data-category="{{ i['category'] }}"
                                 data-amount="{{ i['amount'] }}" data-term="{{ i['term']}}"
@@ -55,7 +55,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-sm">
+        <div class="col-sm-2">
             <a href="{{ url_for('get_preferences') }}" class="btn btn-primary btn-sm" role="button"
                aria-pressed="true" data-toggle="modal" data-target="#exampleModal">Añadir
                 preferencia</a>
@@ -121,7 +121,7 @@
 </div>
 
 <footer>
-    Desarrollado por: Apple Eaters, 2018
+    <strong>Desarrollado por: Apple Eaters, 2018</strong>
 </footer>
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
