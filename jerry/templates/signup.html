@@ -3,65 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css?family=Lato|Poppins" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Poppins" rel="stylesheet">
     <title>Sign up</title>
 </head>
 <body class="signup">
 <div class="row login-title">
-	<h1>Jerry</h1>
+    <h1>Jerry</h1>
 </div>
 
 <form action="http://127.0.0.1:5000/signup" method="POST">
     <h3 class="signup-title">Inserte los datos</h3>
+    {% if user_exits == "Exits" %}
+    <div class="alert alert-dark" role="alert">
+        Usuario ya existente
+    </div>
+    {% endif %}
     <div class="row">
-    <div class="col-md-6" style="text-align: center;">
-        <input name="username" type="text" placeholder="Usuario"/>
-        <br/>
-        <input name="password" type="password" placeholder="Contraseña"/>
-        <br/>
-        <input name="confirm_password" type="password" placeholder="Confirmar contraseña"/>
-        <br/>
-        <input name="birthday" type="date" placeholder="Fecha De nacimiento"/>
-        <br/>
-    </div>
-    <div class="col-md-6" style="text-align: center;">
-        <input name="name" type="text" placeholder="Nombre"/>
-        <br/>
-        <input name="last_name" type="text" placeholder="Apellido"/>
-        <br/>
-        <input name="telephone" type="text" placeholder="Telefono"/>
-        <br/>
-        <input name="address" type="text" placeholder="Direccion"/>
-        <br/>
-    </div>
-    <div class="col-md-12" style="text-align: center;">
-        <p>Genero</p>
-        Masculino<input name="gender" type="radio" value="M">
-        Femenino<input name="gender" type="radio" value="F"/>
-        Otros<input name="gender" type="radio" value="O"/>
-        <br/>
-        <button class="btn btn-success" type="submit">Registrar</button>
-        <a href="/" class="btn btn-primary">Volver</a>
-    </div>
+        <div class="col-md-6" style="text-align: center;">
+            <input name="username" type="text" placeholder="Usuario"/>
+            <br/>
+            <input name="password" type="password" placeholder="Contraseña"/>
+            <br/>
+            <input name="confirm_password" type="password" placeholder="Confirmar contraseña"/>
+            <br/>
+            <input name="birthday" type="date" placeholder="Fecha De nacimiento"/>
+            <br/>
+        </div>
+        <div class="col-md-6" style="text-align: center;">
+            <input name="name" type="text" placeholder="Nombre"/>
+            <br/>
+            <input name="last_name" type="text" placeholder="Apellido"/>
+            <br/>
+            <input name="telephone" type="text" placeholder="Telefono"/>
+            <br/>
+            <input name="address" type="text" placeholder="Direccion"/>
+            <br/>
+        </div>
+        <div class="col-md-12" style="text-align: center;">
+            <p>Genero</p>
+            Masculino<input name="gender" type="radio" value="M">
+            Femenino<input name="gender" type="radio" value="F"/>
+            Otros<input name="gender" type="radio" value="O"/>
+            <br/>
+            <button class="btn btn-success" type="submit">Registrar</button>
+            <a href="/" class="btn btn-primary">Volver</a>
+        </div>
 
-</div>
+    </div>
 </form>
 <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 <script type="application/javascript">
-	jQuery(function ($) {
+    jQuery(function ($) {
 
 
-		$(document).ready(function () {
-			$('.col-md-6, .col-md-12').fadeIn(500);
-		});
+        $(document).ready(function () {
+            $('.col-md-6, .col-md-12').fadeIn(500);
+        });
 
-	});
+    });
 </script>
 </body>
 </html>
