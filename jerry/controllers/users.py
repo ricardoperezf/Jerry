@@ -81,14 +81,15 @@ def add_cards():
     else:
         return jsonify(add_new_card)
 
-@jerry_app.route("/modifycard/<id>", methods=["POST"])
-def modify_Card(id):
-    account_number = request.form.get("account_number")
-    card_number = request.form.get("card_number")
-    cvv = request.form.get("cvv")
-    expiration_date = request.form.get("expiration_date")
-    account_type = request.form.get("account_type")
-    brand = request.form.get("brand")
+@jerry_app.route("/modifycard", methods=["POST"])
+def modify_Card():
+    account_number = request.form.get("account_number2")
+    card_number = request.form.get("card_number2")
+    cvv = request.form.get("cvv2")
+    expiration_date = request.form.get("expiration_date2")
+    account_type = request.form.get("account_type2")
+    brand = request.form.get("brand2")
+    id = request.form.get("id")
 
     add_new_card = Card().modify_card(account_number, card_number, cvv, expiration_date,
                                    account_type, brand, username, id)
@@ -97,11 +98,12 @@ def modify_Card(id):
     else:
         return jsonify(add_new_card)
 
-@jerry_app.route("/modifypPreference/<id>", methods=["POST"])
-def modify_Preference(id):
-    category = request.form.get("category")
-    amount = request.form.get("amount")
-    term = request.form.get("term")
+@jerry_app.route("/modifyPreference", methods=["POST"])
+def modify_Preference():
+    category = request.form.get("category2")
+    amount = request.form.get("amount2")
+    term = request.form.get("term2")
+    id = request.form.get("id")
     add_new_card = Preference().modify_preference(category, amount, term, username, id)
     if add_new_card == "Modificado":
         return render_template("index.html")

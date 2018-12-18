@@ -64,11 +64,11 @@ class Preference:
         document_values = {"category": category, "amount": amount, "term": term}
         if account_list_len is not None:
             print(self.username)
-            find_username = {"username": self.username, "preferences": {"id": id}}
-            new_values = {"$set": {"preferences": {"amount": document_values["amount"],
-                                               "category": document_values["category"],
-                                               "term": document_values["term"]}}}
-            insert_user = collection.update_one(find_username, new_values)
+            username_values = {"username": username, "preferences.id": id}
+            new_values = {"$set": {"preferences.$.amount": document_values["amount"],
+                                   "preferences.$.category": document_values["category"],
+                                   "preferences.$.term": document_values["term"]}}
+            insert_user = collection.update_one(username_values, new_values)
             return "Modificado"
         else:
             return False

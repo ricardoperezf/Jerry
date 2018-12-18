@@ -49,7 +49,7 @@
                                 data-target="#cardsEditModal" data-account-n="{{ i['account_number'] }}"
                                 data-card="{{ i['card_number'] }}" data-cvv="{{ i['cvv']}}"
                                 data-exp="{{ i['expiration_date']}}" data-account-t="{{ i['account_type']}}"
-                                data-brand="{{ i['brand']}}">Editar
+                                data-brand="{{ i['brand']}}" data-id="{{ i['id']}}">Editar
                         </button>
                         <form action="http://127.0.0.1:5000/delete_my_cards/{{ i['id'] }}" method="POST">
                             <div style="text-align: center;">
@@ -116,19 +116,21 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="http://127.0.0.1:5000/add_cards" method="POST">
+                        <form action="http://127.0.0.1:5000/modifycard" method="POST">
                             <div style="text-align: center;">
-                                <input id="account_number" name="account_number" type="text" placeholder="Número de cuenta"/>
+                                <input id="account_number" name="account_number2" type="text" placeholder="Número de cuenta"/>
                                 <br/>
-                                <input id="card_number" name="card_number" type="text" placeholder="Número de tarjeta"/>
+                                <input id="card_number" name="card_number2" type="text" placeholder="Número de tarjeta"/>
                                 <br/>
-                                <input id="cvv" name="cvv" type="text" placeholder="CVV"/>
+                                <input id="cvv" name="cvv2" type="text" placeholder="CVV"/>
                                 <br/>
-                                <input id="exp" name="expiration_date" type="text" placeholder="Fecha de expiración"/>
+                                <input id="exp" name="expiration_date2" type="text" placeholder="Fecha de expiración"/>
                                 <br/>
-                                <input id="account_type" name="account_type" type="text" placeholder="Tipo de cuenta"/>
+                                <input id="account_type" name="account_type2" type="text" placeholder="Tipo de cuenta"/>
                                 <br/>
-                                <input id="brand" name="brand" type="text" placeholder="Marca"/>
+                                <input id="brand" name="brand2" type="text" placeholder="Marca"/>
+                                <br/>
+                                <input id="id" name="id" type="hidden" placeholder="Marca"/>
                                 <br/>
                                 <input type="submit" value="Submit">
                             </div>
@@ -160,6 +162,7 @@
                 $("#exp").val(($(this).data('exp')));
                 $("#account_type").val(($(this).data('account-t')));
                 $("#brand").val(($(this).data('brand')));
+                $("#id").val(($(this).data('id')));
             });
 		});
 
