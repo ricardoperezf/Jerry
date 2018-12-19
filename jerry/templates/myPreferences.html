@@ -15,7 +15,7 @@
     <a class="active" href="{{ url_for('get_preferences') }}">Mis preferencias</a>
     <a href="#">Mis sugerencias</a>
     <a href="{{ url_for('user_information') }}">Mi usuario</a>
-    <a href="{{ url_for('signout') }}">Cerrar sesión</a>
+    <a href="{{ url_for('log_out') }}">Cerrar sesión</a>
 </div>
 <div class="container">
     <div class="row">
@@ -45,8 +45,7 @@
                                 data-id="{{ i['id']}}">Editar
                         </button>
                         <form action="http://127.0.0.1:5000/delete_my_preferences/{{ i['id'] }}" method="POST">
-                            <button type="submit" class="btn btn-danger btn-sm" data-id="{{ i['id'] }}">{{
-                                i['id'] }} Eliminar
+                            <button type="submit" class="btn btn-danger btn-sm" data-id="{{ i['id'] }}"> Eliminar
                             </button>
                         </form>
                     </td>
@@ -81,7 +80,7 @@
                                 <br/>
                                 <input name="term" type="text" placeholder="Plazo"/>
                                 <br/>
-                                <input type="submit" value="Submit">
+                                <button class="btn btn-success" type="submit">Añadir</button>
                             </div>
                         </form>
                     </div>
@@ -94,7 +93,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Añadir nueva preferencia</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Modificar preferencia</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -110,7 +109,7 @@
                                 <br/>
                                 <input id="id" name="id" type="hidden" placeholder="Marca"/>
                                 <br/>
-                                <input type="submit" value="Submit">
+                                <button class="btn btn-success" type="submit">Modificar</button>
                             </div>
                         </form>
                     </div>

@@ -65,6 +65,7 @@ class Card:
                                "account." + str(index_array) + ".brand": cisco_type7.hash(value_list["brand"]),
                                "account." + str(index_array) + ".card_number": cisco_type7.hash(value_list["card_number"]),
                                "account." + str(index_array) + ".cvv": cisco_type7.hash(value_list["cvv"]),
+                               "account." + str(index_array) + ".movements": [],
                                "account." + str(index_array) + ".expiration_date": cisco_type7.hash(value_list["expiration_date"])}}
         return new_values
 

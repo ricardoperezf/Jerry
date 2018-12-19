@@ -15,7 +15,7 @@
     <a href="{{ url_for('get_preferences') }}">Mis preferencias</a>
     <a href="#">Mis sugerencias</a>
     <a href="{{ url_for('user_information') }}">Mi usuario</a>
-    <a href="{{ url_for('signout') }}">Cerrar sesión</a>
+    <a href="{{ url_for('log_out') }}">Cerrar sesión</a>
 </div>
 <div class="container">
     <div class="row" align="center">
@@ -98,7 +98,7 @@
                                 Visa<input name="brand" type="radio" value="VISA">
                                 Mastercard<input name="brand" type="radio" value="MASTERCARD"/>
                                 <br/>
-                                <input type="submit" value="Submit">
+                                <button class="btn btn-success" type="submit">Agregar</button>
                             </div>
                         </form>
                     </div>
@@ -111,13 +111,13 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Añadir tarjeta</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Editar tarjeta</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="http://127.0.0.1:5000/modifycard" method="POST">
+                        <form action="http://127.0.0.1:5000/get_my_cards" method="POST">
                             <div style="text-align: center;">
                                 <input id="account_number" name="account_number2" type="number" placeholder="Número de cuenta"/>
                                 <br/>
@@ -135,7 +135,7 @@
                                 <br/>
                                 <input id="id" name="id" type="hidden" placeholder="Marca"/>
                                 <br/>
-                                <input type="submit" value="Submit">
+                                <button class="btn btn-success" type="submit">Editar</button>
                             </div>
                         </form>
                     </div>
