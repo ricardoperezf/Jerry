@@ -74,11 +74,11 @@
                     <div class="modal-body">
                         <form action="http://127.0.0.1:5000/preferences" method="POST">
                             <div style="text-align: center;">
-                                <input name="category" type="text" placeholder="Categoría"/>
+                                <input name="category" type="text" placeholder="Categoría" required/>
                                 <br/>
-                                <input name="amount" type="text" placeholder="Cantidad de dinero"/>
+                                <input name="amount" type="text" placeholder="Cantidad de dinero" required/>
                                 <br/>
-                                <input name="term" type="text" placeholder="Plazo"/>
+                                <input name="term" type="text" placeholder="Plazo" required/>
                                 <br/>
                                 <button class="btn btn-success" type="submit">Añadir</button>
                             </div>
@@ -101,11 +101,11 @@
                     <div class="modal-body">
                         <form action="http://127.0.0.1:5000/modifyPreference" method="POST">
                             <div style="text-align: center;">
-                                <input id="category2" name="category2" type="text" placeholder="Categoría"/>
+                                <input id="category2" name="category2" type="text" placeholder="Categoría" required/>
                                 <br/>
-                                <input id="amount2" name="amount2" type="text" placeholder="Cantidad de dinero"/>
+                                <input id="amount2" name="amount2" type="text" placeholder="Cantidad de dinero" required/>
                                 <br/>
-                                <input id="term2" name="term2" type="text" placeholder="Plazo"/>
+                                <input id="term2" name="term2" type="text" placeholder="Plazo" required/>
                                 <br/>
                                 <input id="id" name="id" type="hidden" placeholder="Marca"/>
                                 <br/>

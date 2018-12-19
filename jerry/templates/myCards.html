@@ -84,19 +84,19 @@
                     <div class="modal-body">
                         <form action="http://127.0.0.1:5000/add_cards" method="POST">
                             <div style="text-align: center;">
-                                <input name="account_number" type="number" placeholder="Número de cuenta"/>
+                                <input name="account_number" type="number" placeholder="Número de cuenta" required/>
                                 <br/>
-                                <input name="card_number" type="number" placeholder="Número de tarjeta"/>
+                                <input name="card_number" type="number" placeholder="Número de tarjeta" required/>
                                 <br/>
-                                <input name="cvv" type="number" placeholder="CVV"/>
+                                <input name="cvv" type="number" placeholder="CVV" required/>
                                 <br/>
-                                <input name="expiration_date" type="date" placeholder="Fecha de expiración"/>
+                                <input name="expiration_date" type="date" placeholder="Fecha de expiración" required/>
                                 <br/>
-                                Debito<input name="account_type" type="radio" value="DEBITO">
-                                Credito<input name="account_type" type="radio" value="CREDITO"/>
+                                Debito<input name="account_type" type="radio" value="DEBITO" required/>
+                                Credito<input name="account_type" type="radio" value="CREDITO" required/>
                                 <br/>
-                                Visa<input name="brand" type="radio" value="VISA">
-                                Mastercard<input name="brand" type="radio" value="MASTERCARD"/>
+                                Visa<input name="brand" type="radio" value="VISA" required/>
+                                Mastercard<input name="brand" type="radio" value="MASTERCARD" required/>
                                 <br/>
                                 <button class="btn btn-success" type="submit">Agregar</button>
                             </div>
@@ -119,19 +119,19 @@
                     <div class="modal-body">
                         <form action="http://127.0.0.1:5000/get_my_cards" method="POST">
                             <div style="text-align: center;">
-                                <input id="account_number" name="account_number2" type="number" placeholder="Número de cuenta"/>
+                                <input id="account_number" name="account_number2" type="number" placeholder="Número de cuenta" required/>
                                 <br/>
-                                <input id="card_number" name="card_number2" type="number" placeholder="Número de tarjeta"/>
+                                <input id="card_number" name="card_number2" type="number" placeholder="Número de tarjeta" required/>
                                 <br/>
-                                <input id="cvv" name="cvv2" type="number" placeholder="CVV"/>
+                                <input id="cvv" name="cvv2" type="number" placeholder="CVV" required/>
                                 <br/>
-                                <input id="exp" name="expiration_date2" type="date" placeholder="Fecha de expiración"/>
+                                <input id="exp" name="expiration_date2" type="date" placeholder="Fecha de expiración" required/>
                                 <br/>
-                                Debito<input class="account-radio" input name="account_type2" type="radio" value="DEBITO">
-                                Credito<input class="account-radio" name="account_type2" type="radio" value="CREDITO"/>
+                                Debito<input class="account-radio" input name="account_type2" type="radio" value="DEBITO" required/>
+                                Credito<input class="account-radio" name="account_type2" type="radio" value="CREDITO" required/>
                                 <br/>
-                                Visa<input class="brand-radio" name="brand2" type="radio" value="VISA">
-                                Mastercard<input class="brand-radio" name="brand2" type="radio" value="MASTERCARD"/>
+                                Visa<input class="brand-radio" name="brand2" type="radio" value="VISA" required/>
+                                Mastercard<input class="brand-radio" name="brand2" type="radio" value="MASTERCARD" required/>
                                 <br/>
                                 <input id="id" name="id" type="hidden" placeholder="Marca"/>
                                 <br/>
