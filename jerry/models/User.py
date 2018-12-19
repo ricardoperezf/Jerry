@@ -109,8 +109,7 @@ class UserCreation(User):
                 "birthday": self.birthday,
                 "gender": self.gender,
                 "account": [],
-                "preferences": [],
-
+                "preferences": []
             }
             collection.insert_one(new_user_query)
             return "Not exits"
