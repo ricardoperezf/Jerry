@@ -85,7 +85,6 @@ class User:
 class UserCreation(User):
 
     def __init__(self, username, password, name, last_name, telephone, address, birthday, gender):
-        super().__init__()
         self.username = username
         self.password = password
         self.name = name
@@ -110,7 +109,8 @@ class UserCreation(User):
                 "birthday": self.birthday,
                 "gender": self.gender,
                 "account": [],
-                "preferences": []
+                "preferences": [],
+
             }
             collection.insert_one(new_user_query)
             return "Not exits"

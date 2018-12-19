@@ -86,6 +86,24 @@ class Card:
         # print(account_list)
         return solved_list
 
+    @staticmethod
+    def get_movements(username):
+        username_query = {"username": username}
+        username_information = collection.find_one(username_query)
+        account_list = username_information['account']
+        solved_list = []
+        for i in range(len(username_information['account'])):
+            for j in range(len(username_information['account'][i]["movements"])):
+                solved_list.append({"id": account_list[i]["id"],
+                                    "date": account_list[i]["movements"][j]["date"],
+                                    "name": account_list[i]["movements"][j]["name"],
+                                    "location": account_list[i]["movements"][j]["location"],
+                                    "amount": account_list[i]["movements"][j]["amount"],
+                                    "currency": account_list[i]["movements"][j]["currency"],
+                                    "movementType": account_list[i]["movements"][j]["movementType"]})
+        # print(account_list)
+        return solved_list
+
     def delete_card(self, username, id):
         username_query = {"username": username}
         username_information = collection.find_one(username_query)

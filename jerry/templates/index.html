@@ -19,13 +19,40 @@
     <a href="{{ url_for('log_out') }}">Cerrar sesión</a>
 </div>
 
+<h1 style="text-align:center;color: white">Últimas movimientos</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2">
 
-<section>
-    <article class="article-index">
-        <h1 style="text-align:center">Últimas sugerencias</h1>
-        <!-- <div class="a" id="googleMap"></div> -->
-    </article>
-</section>
+        </div>
+        <div class="col-sm-8">
+                <table class="table">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Ubicacion</th>
+                        <th scope="col">cantidad</th>
+                        <th scope="col">Moneda</th>
+                        <th scope="col">tipo de movimiento</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in get_cards %}
+                    <tr>
+                        <td>{{ i["date"] }}</td>
+                        <td>{{ i["name"] }}</td>
+                        <td>{{ i["location"]}}</td>
+                        <td>{{ i["amount"]}}</td>
+                        <td>{{ i["currency"]}}</td>
+                        <td>{{ i["movementType"]}}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+        </div>
+    </div>
+</div>
 
 <footer>
     Desarrollado por: Apple Eaters, 2018

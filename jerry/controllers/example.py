@@ -17,7 +17,7 @@ def get_discipline_city():
     for q in cursor:
         print(q)
         vector.append({
-            'account': q["account"][1]["account_type"]
+            'movements': q["account"][0]["movements"][0]
         })
 
     return jsonify(vector)

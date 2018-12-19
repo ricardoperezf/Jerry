@@ -40,9 +40,9 @@ def log_in():
         user_logged_in = user.log_in(session["user"], session["pass"])
 
         if user_logged_in == "Hizo match":
-            # print(session["user"])
+            card_list = Card().get_movements(session["user"])
             session["auth"] = 1
-            return render_template("index.html")
+            return render_template("index.html",get_cards=card_list)
         else:
             # print(user_logged_in)
             return render_template("signin.html", login=user_logged_in)
