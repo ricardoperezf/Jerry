@@ -1,10 +1,14 @@
 from flask import request, jsonify, render_template, abort
 from jerry import jerry_app
+from flask import session
 
 
 # Set the route and accepted methods
 @jerry_app.route('/', methods=["GET"])
 def signin():
+    session["user"] = None
+    session["pass"] = None
+    session["auth"] = 0
     return render_template("signin.html")
 
 
@@ -16,8 +20,3 @@ def pp():
 @jerry_app.route('/paginasignup', methods=["POST"])
 def signup():
     return render_template("signup.html")
-
-
-@jerry_app.route('/signout', methods=["GET"])
-def signout():
-    return render_template("signin.html")

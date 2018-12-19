@@ -21,3 +21,4 @@ jerry/__pycache__/*
 .jerry/__pycache__/*
 .jerry/__pycache__/
 >>>>>>> 593ec72df116c3115e457f2bfd66310e9d42ff10
+.jerry/.idea/*

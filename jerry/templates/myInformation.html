@@ -15,7 +15,7 @@
     <a href="{{ url_for('get_preferences') }}">Mis preferencias</a>
     <a href="#">Mis sugerencias</a>
     <a href="{{ url_for('user_information') }}">Mi usuario</a>
-    <a href="{{ url_for('signout') }}">Cerrar sesión</a>
+    <a href="{{ url_for('log_out') }}">Cerrar sesión</a>
 </div>
 <div class="container">
     <h2>Mi información</h2>
@@ -68,7 +68,7 @@
                     Otros<input name="gender" type="radio" class="form-control" aria-label="Sizing example input"
                                 aria-describedby="inputGroup-sizing-sm" value="O"/>
                 </div>
-                <input type="submit" formaction="http://127.0.0.1:5000/modify" formmethod="POST" value="Guardar"/>
+                <input type="submit" value="Guardar"/>
             </form>
         </div>
     </div>
