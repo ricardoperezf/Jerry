@@ -47,6 +47,18 @@ def log_in():
             # print(user_logged_in)
             return render_template("signin.html", login=user_logged_in)
 
+@jerry_app.route("/get_movements", methods=["GET"])
+def get_movements():
+    if session["auth"] == 0:
+        return render_template("signin.html")
+
+    card_list = Card().get_movements(session["user"])
+    if card_list is not None:
+        # print(card_list)
+        return render_template("index.html", get_cards=card_list)
+    else:
+        return jsonify("There's not exits cards")
+
 
 @jerry_app.route("/logout", methods=["GET"])
 def log_out():
